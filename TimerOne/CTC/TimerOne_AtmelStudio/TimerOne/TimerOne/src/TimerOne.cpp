@@ -158,7 +158,7 @@ stdReturnType TimerOne::start()
 		/* set overflow interrupt, if callback is set */
 		if(TimerOverflowCallback != NULL) {
 			/* wait until timer moved on from zero, otherwise get phantom interrupt */
-			do { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {TCNT1_tmp = TCNT1; }} while (TCNT1_tmp == 0);
+			do { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { TCNT1_tmp = TCNT1; }} while (TCNT1_tmp == 0);
 			/* enable timer overflow interrupt */
 			writeBit(TIMSK1, TOIE1, 1);
 		}
