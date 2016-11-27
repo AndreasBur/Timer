@@ -164,7 +164,7 @@ stdReturnType TimerOne::enablePwm(TimerOnePwmPinType PwmPin, unsigned int DutyCy
 		} else if(TIMERONE_PWM_PIN_10 == PwmPin) {
 			pinMode(TIMERONE_PWM_PIN_10, OUTPUT);
 			/* activate compare output mode in timer control register */
-			writeBit(TCCR1B, COM1B1, 1);
+			writeBit(TCCR1A, COM1B1, 1);
 		} else {
 			ReturnValue = E_NOT_OK;
 		}
@@ -226,7 +226,7 @@ stdReturnType TimerOne::setPwmDuty(TimerOnePwmPinType PwmPin, unsigned int DutyC
 		if(DutyCycle <= TIMERONE_RESOLUTION) {	
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 				/* use rule of three to calculate duty cycle related to timer top value */
-				DutyCycleTrans = ICR1 * DutyCycle;
+				DutyCycleTrans = (unsigned long) ICR1 * DutyCycle;
 				DutyCycleTrans >>= TIMERONE_NUMBER_OF_BITS;
 				/* set output compare register value for given pwm pin */
 				if(TIMERONE_PWM_PIN_9 == PwmPin) OCR1A = DutyCycleTrans;
@@ -330,7 +330,7 @@ stdReturnType TimerOne::attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCal
 	if(sTimerOverflowCallback != NULL) {
 		TimerOverflowCallback = sTimerOverflowCallback;
 		/* enable timer overflow interrupt */
-		writeBit(TIMSK1, TOIE1, 1);
+		if(State == TIMERONE_STATE_RUNNING) writeBit(TIMSK1, TOIE1, 1);
 		return E_OK;
 	} else {
 		return E_NOT_OK;
@@ -397,9 +397,9 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 		/* wait one counter tick, needed to find out counter counting up or down */
 		do { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { TCNT1_tmp = TCNT1; }} while (TCNT1_tmp == CounterValue);
 		/* if counter counting down, add top value to current value */
-		if(TCNT1_tmp < CounterValue) CounterValue = (int) (OCR2A - CounterValue) + (int) OCR2A;
+		if(TCNT1_tmp < CounterValue) { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = (int) (ICR1 - CounterValue) + (int) ICR1; } }
 		/* transform counter value to microseconds in an efficient way */
-		*Microseconds = (((CounterValue * 1000L) << PrescaleShiftScale) / (F_CPU / 1000L));
+		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
@@ -419,3 +419,4 @@ ISR(TIMER1_OVF_vect)
 /******************************************************************************************************************************************************
  *  E N D   O F   F I L E
  *****************************************************************************************************************************************************/
+ 

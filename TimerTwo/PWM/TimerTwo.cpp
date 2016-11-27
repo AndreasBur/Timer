@@ -327,7 +327,7 @@ stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCal
 	if(sTimerOverflowCallback != NULL) {
 		TimerOverflowCallback = sTimerOverflowCallback;
 		/* enable timer overflow interrupt */
-		writeBit(TIMSK2, TOIE2, 1);
+		if(State == TIMERTWO_STATE_RUNNING) writeBit(TIMSK2, TOIE2, 1);
 		return E_OK;
 	} else {
 		return E_NOT_OK;
@@ -366,7 +366,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 	stdReturnType ReturnValue = E_OK;
 	byte TCNT2_tmp;
 	int CounterValue;
-	char PrescaleShiftScale = 0;
+	byte PrescaleShiftScale = 0;
 
 	if(TIMERTWO_STATE_RUNNING == State) {
 		/* save current timer value */
@@ -402,7 +402,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 		/* if counter counting down, add top value to current value */
 		if(TCNT2_tmp < CounterValue) CounterValue = (int) (OCR2A - CounterValue) + (int) OCR2A;
 		/* transform counter value to microseconds in an efficient way */
-		*Microseconds = (((CounterValue * 1000L) << PrescaleShiftScale) / (F_CPU / 1000L));
+		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
