@@ -149,8 +149,6 @@ stdReturnType TimerTwo::setPeriod(long Microseconds)
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::start()
 {
-	byte TCNT2_tmp;
-
 	if(TIMERTWO_STATE_READY == State || TIMERTWO_STATE_STOPPED == State) {
 		/* reset counter value */
 		TCNT2 = 0;

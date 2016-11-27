@@ -148,8 +148,6 @@ stdReturnType TimerOne::setPeriod(long Microseconds)
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::start()
 {
-	unsigned int TCNT1_tmp;
-
 	if(TIMERONE_STATE_READY == State || TIMERONE_STATE_STOPPED == State) {
 		/* reset counter value */
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { TCNT1 = 0; }

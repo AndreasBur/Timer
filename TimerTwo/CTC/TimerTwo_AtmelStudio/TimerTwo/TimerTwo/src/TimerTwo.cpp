@@ -125,7 +125,7 @@ stdReturnType TimerTwo::setPeriod(long Microseconds)
 		ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
 		ReturnValue = E_NOT_OK;
 	}
-	/* OCR2A is TOP in clear timer on compare match */
+	/* OCR2A is TOP in mode 2: clear timer on compare match (CTC) */
 	OCR2A = TimerCycles;
 
 	if(TIMERTWO_STATE_RUNNING == State)
@@ -149,19 +149,15 @@ stdReturnType TimerTwo::setPeriod(long Microseconds)
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::start()
 {
-	byte TCNT2_tmp;
-
 	if(TIMERTWO_STATE_READY == State || TIMERTWO_STATE_STOPPED == State) {
 		/* reset counter value */
 		TCNT2 = 0;
 		/* start counter by setting clock select register */
 		writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, ClockSelectBitGroup);
-		/* set overflow interrupt, if callback is set */
+		/* set compare interrupt, if callback is set */
 		if(TimerOverflowCallback != NULL) {
-			/* wait until timer moved on from zero, otherwise get phantom interrupt */
-			do { TCNT2_tmp = TCNT2; } while (TCNT2_tmp == 0);
-			/* enable timer overflow interrupt */
-			writeBit(TIMSK2, TOIE2, 1);
+			/* enable timer compare interrupt */
+			writeBit(TIMSK2, OCIE2A, 1);
 		}
 		State = TIMERTWO_STATE_RUNNING;
 		return E_OK;
@@ -212,10 +208,10 @@ stdReturnType TimerTwo::resume()
 /******************************************************************************************************************************************************
   attachInterrupt()
 ******************************************************************************************************************************************************/
-/*! \brief          set timer overflow interrupt callback
+/*! \brief          set timer copare interrupt callback
  *  \details        
  *                  
- *  \param[in]      sTimerOverflowCallback				timer overflow callback function
+ *  \param[in]      sTimerOverflowCallback				timer compare callback function
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
@@ -223,8 +219,8 @@ stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCal
 {
 	if(sTimerOverflowCallback != NULL) {
 		TimerOverflowCallback = sTimerOverflowCallback;
-		/* enable timer overflow interrupt */
-		writeBit(TIMSK2, TOIE2, 1);
+		/* enable timer compare interrupt */
+		if(State == TIMERTWO_STATE_RUNNING) writeBit(TIMSK2, OCIE2A, 1);
 		return E_OK;
 	} else {
 		return E_NOT_OK;
@@ -235,15 +231,15 @@ stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCal
 /******************************************************************************************************************************************************
   detachInterrupt()
 ******************************************************************************************************************************************************/
-/*! \brief          clear timer overflow interrupt callback
+/*! \brief          clear timer compare interrupt callback
  *  \details        
  *                  
  *  \return         -
  *****************************************************************************************************************************************************/
 void TimerTwo::detachInterrupt()
 {
-	/* clears the timer overflow interrupt enable bit */
-	writeBit(TIMSK2, TOIE2, 0);
+	/* clears the timer compare interrupt enable bit */
+	writeBit(TIMSK2, OCIE2A, 0);
 } /* detachInterrupt */
 
 
@@ -262,7 +258,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
 	int CounterValue;
-	char PrescaleShiftScale = 0;
+	byte PrescaleShiftScale = 0;
 
 	if(TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State) {
 		/* save current timer value */
@@ -293,7 +289,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 			default:
 				ReturnValue = E_NOT_OK;
 		}
-		*Microseconds = (((CounterValue * 1000L) << PrescaleShiftScale) / (F_CPU / 1000L));
+		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
@@ -304,7 +300,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 /******************************************************************************************************************************************************
   I S R   F U N C T I O N S
 ******************************************************************************************************************************************************/
-ISR(TIMER2_OVF_vect)
+ISR(TIMER2_COMPA_vect)
 {
 	Timer2.TimerOverflowCallback();
 }
