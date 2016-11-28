@@ -282,7 +282,7 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 			default:
 				ReturnValue = E_NOT_OK;
 		}
-		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
+		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}

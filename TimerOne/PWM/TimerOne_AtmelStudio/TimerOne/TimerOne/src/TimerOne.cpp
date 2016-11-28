@@ -399,7 +399,7 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 		/* if counter counting down, add top value to current value */
 		if(TCNT1_tmp < CounterValue) { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = (int) (ICR1 - CounterValue) + (int) ICR1; }}
 		/* transform counter value to microseconds in an efficient way */
-		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
+		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
