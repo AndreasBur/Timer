@@ -8,15 +8,15 @@
  *  ---------------------------------------------------------------------------------------------------------------------------------------------------
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------------------------------------*/
-/**     \file       TimerTwo.h
- *      \brief      Main header file of TimerTwo library
+/**     \file       TimerOne.h
+ *      \brief      Main header file of TimerOne library
  *
- *      \details    Arduino library to use Timer two
+ *      \details    Arduino library to use Timer 1
  *                  
  *
  *****************************************************************************************************************************************************/
-#ifndef _TIMERTWO_H_
-#define _TIMERTWO_H_
+#ifndef _TIMERONE_H_
+#define _TIMERONE_H_
 
 /******************************************************************************************************************************************************
  * INCLUDES
@@ -30,19 +30,19 @@
 /******************************************************************************************************************************************************
  *  LOCAL CONSTANT MACROS
  *****************************************************************************************************************************************************/
-/* Timer2 is 8 bit */
-#define TIMERTWO_NUMBER_OF_BITS						8
-#define TIMERTWO_RESOLUTION							(1UL << TIMERTWO_NUMBER_OF_BITS)
+/* Timer1 is 16 bit */
+#define TIMERONE_NUMBER_OF_BITS						16
+#define TIMERONE_RESOLUTION							(1UL << TIMERONE_NUMBER_OF_BITS)
 
-/* OC2A Chip Pin 17, Pin name PB3 */
-#define TIMERTWO_A_ARDUINO_PIN						11
-//#define TIMERTWO_A_PORT_PIN						PORTB3
-/* OC2B Chip Pin 5, Pin name PD3 */
-#define TIMERTWO_B_ARDUINO_PIN						3
-//#define TIMERTWO_A_PORT_PIN						PORTD3
+/* OC1A Chip Pin 15, Pin name PB1 */
+#define TIMERONE_A_ARDUINO_PIN						9
+//#define TIMERONE_A_PORT_PIN						PORTB1
+/* OC1B Chip Pin 16, Pin name PB2 */
+#define TIMERONE_B_ARDUINO_PIN						10
+//#define TIMERONE_A_PORT_PIN						PORTB2
 
-#define TIMERTWO_REG_CS_GP							0
-#define TIMERTWO_REG_CS_GM							B111
+#define TIMERONE_REG_CS_GP							0
+#define TIMERONE_REG_CS_GM							B111
 
 
 /******************************************************************************************************************************************************
@@ -56,64 +56,59 @@
 /* Timer ISR callback function */
 typedef void (*TimerIsrCallbackF_void)(void);
 
-/* Type which describes the internal state of the TimerTwo */
+/* Type which describes the internal state of the TimerOne */
 typedef enum {
-	TIMERTWO_STATE_NONE,
-	TIMERTWO_STATE_INIT,
-	TIMERTWO_STATE_READY,
-	TIMERTWO_STATE_RUNNING,
-	TIMERTWO_STATE_STOPPED
-} TimerTwoStateType;
+	TIMERONE_STATE_NONE,
+	TIMERONE_STATE_INIT,
+	TIMERONE_STATE_READY,
+	TIMERONE_STATE_RUNNING,
+	TIMERONE_STATE_STOPPED
+} TimerOneStateType;
 
 /* Type which includes the values of the Clock Select Bit Group */
 typedef enum {
-	TIMERTWO_REG_CS_NO_CLOCK,
-	TIMERTWO_REG_CS_NO_PRESCALER,
-	TIMERTWO_REG_CS_PRESCALE_8,
-	TIMERTWO_REG_CS_PRESCALE_32,
-	TIMERTWO_REG_CS_PRESCALE_64,
-	TIMERTWO_REG_CS_PRESCALE_128,
-	TIMERTWO_REG_CS_PRESCALE_256,
-	TIMERTWO_REG_CS_PRESCALE_1024
-} TimerTwoClockSelectType;
+	TIMERONE_REG_CS_NO_CLOCK,
+	TIMERONE_REG_CS_NO_PRESCALER,
+	TIMERONE_REG_CS_PRESCALE_8,
+	TIMERONE_REG_CS_PRESCALE_64,
+	TIMERONE_REG_CS_PRESCALE_256,
+	TIMERONE_REG_CS_PRESCALE_1024
+} TimerOneClockSelectType;
 
 /* Type which includes the Pwm Pins */
 typedef enum {
-	//TIMERTWO_PWM_PIN_11 = TIMERTWO_A_ARDUINO_PIN,
-	TIMERTWO_PWM_PIN_3 = TIMERTWO_B_ARDUINO_PIN
-} TimerTwoPwmPinType;
+	TIMERONE_PWM_PIN_9 = TIMERONE_A_ARDUINO_PIN,
+	TIMERONE_PWM_PIN_10 = TIMERONE_B_ARDUINO_PIN
+} TimerOnePwmPinType;
 
 
 /******************************************************************************************************************************************************
- *  CLASS  TimerTwo
+ *  CLASS  TimerOne
  *****************************************************************************************************************************************************/
-class TimerTwo
+class TimerOne
 {
   private:
-	TimerTwoStateType State;
-	TimerTwoClockSelectType ClockSelectBitGroup;
+	TimerOneStateType State;
+	TimerOneClockSelectType ClockSelectBitGroup;
 	unsigned int PwmPeriod;
 
   public:
-    TimerTwo();
-    ~TimerTwo();
+    TimerOne();
+    ~TimerOne();
 
-	TimerIsrCallbackF_void TimerOverflowCallback;
-	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerOverflowCallback = NULL);
-	stdReturnType setPeriod(long Microseconds);
-	stdReturnType enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCylce, long Microseconds = -1);
-	stdReturnType disablePwm(TimerTwoPwmPinType PwmPin);
-	stdReturnType setPwmDuty(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle);
+	TimerIsrCallbackF_void TimerCompareCallback;
+	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
+	stdReturnType setPeriod(long);
 	stdReturnType start();
 	void stop();
 	stdReturnType resume();
-	stdReturnType attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback);
+	stdReturnType attachInterrupt(TimerIsrCallbackF_void);
 	void detachInterrupt();
-	stdReturnType read(unsigned int *Microseconds);
+	stdReturnType read(unsigned long*);
 };
 
-/* TimerTwo will be pre-instantiated in TimerTwo source file */
-extern TimerTwo Timer2;
+/* TimerOne will be pre-instantiated in TimerOne source file */
+extern TimerOne Timer1;
 
 #endif
 

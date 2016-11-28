@@ -8,25 +8,25 @@
  *  ---------------------------------------------------------------------------------------------------------------------------------------------------
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------------------------------------*/
-/**     \file       TimerTwo.c
- *      \brief      Main file of TimerTwo library
+/**     \file       TimerOne.c
+ *      \brief      Main file of TimerOne library
  *
- *      \details    Arduino library to use Timer 2
+ *      \details    Arduino library to use Timer 1
  *                  
  *
  *****************************************************************************************************************************************************/
-#define _TIMERTWO_SOURCE_
+#define _TIMERONE_SOURCE_
 
 /******************************************************************************************************************************************************
  * INCLUDES
  *****************************************************************************************************************************************************/
-#include "TimerTwo.h"
-
+#include "TimerOne.h"
+#include <util/atomic.h>
 
 /******************************************************************************************************************************************************
  * GLOBAL DATA
  *****************************************************************************************************************************************************/
-TimerTwo Timer2;              // pre-instantiate TimerTwo
+TimerOne Timer1;              // pre-instantiate TimerOne
 
 
 /******************************************************************************************************************************************************
@@ -34,35 +34,35 @@ TimerTwo Timer2;              // pre-instantiate TimerTwo
  *****************************************************************************************************************************************************/
 
 /******************************************************************************************************************************************************
-  CONSTRUCTOR OF TimerTwo
+  CONSTRUCTOR OF TimerOne
 ******************************************************************************************************************************************************/
-/*! \brief          TimerTwo constructor
- *  \details        Instantiation of the TimerTwo library
+/*! \brief          TimerOne constructor
+ *  \details        Instantiation of the TimerOne library
  *    
  *  \return         -
  *****************************************************************************************************************************************************/
-TimerTwo::TimerTwo()
+TimerOne::TimerOne()
 {
-	State = TIMERTWO_STATE_NONE;
-	TimerOverflowCallback = NULL;
-	ClockSelectBitGroup = TIMERTWO_REG_CS_NO_CLOCK;
-} /* TimerTwo */
+	State = TIMERONE_STATE_NONE;
+	TimerCompareCallback = NULL;
+	ClockSelectBitGroup = TIMERONE_REG_CS_NO_CLOCK;
+} /* TimerOne */
 
 
 /******************************************************************************************************************************************************
-  DESTRUCTOR OF TimerTwo
+  DESTRUCTOR OF TimerOne
 ******************************************************************************************************************************************************/
-TimerTwo::~TimerTwo()
+TimerOne::~TimerOne()
 {
 
-} /* ~TimerTwo */
+} /* ~TimerOne */
 
 
 /******************************************************************************************************************************************************
   init()
 ******************************************************************************************************************************************************/
-/*! \brief          initialization of the Timer2 hardware
- *  \details        this functions initializes the Timer2 hardware
+/*! \brief          initialization of the Timer1 hardware
+ *  \details        this functions initializes the Timer1 hardware
  *                  
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \param[in]      sTimerOverflowCallback      Callback function which should be called when timer overflow interrupt occurs
@@ -70,25 +70,26 @@ TimerTwo::~TimerTwo()
  *                  E_NOT_OK
  *  \pre			Timer has to be in NONE STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCompareCallback)
+stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerCompareCallback)
 {
 	stdReturnType ReturnValue = E_OK;
 
-	if(TIMERTWO_STATE_NONE == State) {
-		State = TIMERTWO_STATE_INIT;
+	if(TIMERONE_STATE_NONE == State) {
+		State = TIMERONE_STATE_INIT;
 		/* clear control register */
-	    TCCR2A = 0;
-	    TCCR2B = 0;
+	    TCCR1A = 0;
+	    TCCR1B = 0;
 	    
-	    /* set mode 2: clear timer on compare match (CTC) */
-	    writeBit(TCCR2A, WGM20, 0);
-	    writeBit(TCCR2A, WGM21, 1);
-	    writeBit(TCCR2B, WGM22, 0);
+	    /* set mode 12: clear timer on compare match (CTC) */
+	    writeBit(TCCR1A, WGM10, 0);
+	    writeBit(TCCR1A, WGM11, 0);
+	    writeBit(TCCR1B, WGM12, 1);
+		writeBit(TCCR1B, WGM13, 1);
 		
 		if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
 		if(sTimerCompareCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerCompareCallback)) ReturnValue = E_NOT_OK;
 
-		State = TIMERTWO_STATE_READY;
+		State = TIMERONE_STATE_READY;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
@@ -99,39 +100,37 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
 /******************************************************************************************************************************************************
   setPeriod()
 ******************************************************************************************************************************************************/
-/*! \brief          set period of Timer2 compare interrupt
- *  \details        this functions sets the period of the Timer2 compare interrupt therefore 
+/*! \brief          set period of Timer1 overflow interrupt
+ *  \details        this functions sets the period of the Timer1 overflow interrupt therefore 
  *                  prescaler and timer top value will be calculated
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::setPeriod(long Microseconds)
+stdReturnType TimerOne::setPeriod(long Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
-	/*  */
+	/* the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
 	unsigned long TimerCycles = (F_CPU / 1000000) * Microseconds;
 
-	if(TimerCycles < TIMERTWO_RESOLUTION)              ClockSelectBitGroup = TIMERTWO_REG_CS_NO_PRESCALER;
-	else if((TimerCycles >>= 3) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_8;
-	else if((TimerCycles >>= 2) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_32;
-	else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_64;
-	else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_128;
-	else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_256;
-	else if((TimerCycles >>= 2) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
+	if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;
+	else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_8;
+	else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_64;
+	else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_256;
+	else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
 	else {
 		/* request was out of bounds, set as maximum */
-		TimerCycles = TIMERTWO_RESOLUTION - 1;
-		ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
+		TimerCycles = TIMERONE_RESOLUTION - 1;
+		ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
 		ReturnValue = E_NOT_OK;
 	}
-	/* OCR2A is TOP in mode 2: clear timer on compare match (CTC) */
-	OCR2A = TimerCycles;
+	/* ICR1 is TOP in mode 12: clear timer on compare match (CTC) */
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { ICR1 = TimerCycles; }
 
-	if(TIMERTWO_STATE_RUNNING == State)
+	if(TIMERONE_STATE_RUNNING == State)
 	{
 		/* reset clock select register, and starts the clock */
-		writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, ClockSelectBitGroup);						
+		writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
 	}
 	return ReturnValue;
 } /* setPeriod */
@@ -147,19 +146,19 @@ stdReturnType TimerTwo::setPeriod(long Microseconds)
  *                  E_NOT_OK
  *  \pre			Timer has to be in READY or STOPPED STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::start()
+stdReturnType TimerOne::start()
 {
-	if(TIMERTWO_STATE_READY == State || TIMERTWO_STATE_STOPPED == State) {
+	if(TIMERONE_STATE_READY == State || TIMERONE_STATE_STOPPED == State) {
 		/* reset counter value */
-		TCNT2 = 0;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { TCNT1 = 0; }
 		/* start counter by setting clock select register */
-		writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, ClockSelectBitGroup);
+		writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);
 		/* set compare interrupt, if callback is set */
-		if(TimerOverflowCallback != NULL) {
+		if(TimerCompareCallback != NULL) {
 			/* enable timer compare interrupt */
-			writeBit(TIMSK2, OCIE2A, 1);
+			writeBit(TIMSK1, OCIE1A, 1);
 		}
-		State = TIMERTWO_STATE_RUNNING;
+		State = TIMERONE_STATE_RUNNING;
 		return E_OK;
 	} else {
 		return E_NOT_OK;
@@ -175,11 +174,11 @@ stdReturnType TimerTwo::start()
  *                  
  *  \return         -
  *****************************************************************************************************************************************************/
-void TimerTwo::stop()
+void TimerOne::stop()
 {
 	/* stop counter by clearing clock select register */
-	writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, TIMERTWO_REG_CS_NO_CLOCK);
-	State = TIMERTWO_STATE_STOPPED;
+	writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, TIMERONE_REG_CS_NO_CLOCK);
+	State = TIMERONE_STATE_STOPPED;
 } /* stop */
 
 
@@ -193,11 +192,11 @@ void TimerTwo::stop()
  *                  E_NOT_OK
  *  \pre			Timer has to be in STOPPED STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::resume()
+stdReturnType TimerOne::resume()
 {
-	if(TIMERTWO_STATE_STOPPED == State) {
+	if(TIMERONE_STATE_STOPPED == State) {
 		/* resume counter by setting clock select register */
-		writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, ClockSelectBitGroup);
+		writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);
 		return E_OK;
 	} else {
 		return E_NOT_OK;
@@ -215,12 +214,12 @@ stdReturnType TimerTwo::resume()
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerCompareCallback)
+stdReturnType TimerOne::attachInterrupt(TimerIsrCallbackF_void sTimerCompareCallback)
 {
 	if(sTimerCompareCallback != NULL) {
-		TimerOverflowCallback = sTimerCompareCallback;
+		TimerCompareCallback = sTimerCompareCallback;
 		/* enable timer compare interrupt */
-		if(State == TIMERTWO_STATE_RUNNING) writeBit(TIMSK2, OCIE2A, 1);
+		if(State == TIMERONE_STATE_RUNNING) writeBit(TIMSK1, OCIE1A, 1);
 		return E_OK;
 	} else {
 		return E_NOT_OK;
@@ -236,10 +235,10 @@ stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerCompareCall
  *                  
  *  \return         -
  *****************************************************************************************************************************************************/
-void TimerTwo::detachInterrupt()
+void TimerOne::detachInterrupt()
 {
 	/* clears the timer compare interrupt enable bit */
-	writeBit(TIMSK2, OCIE2A, 0);
+	writeBit(TIMSK1, OCIE1A, 0);
 } /* detachInterrupt */
 
 
@@ -254,36 +253,30 @@ void TimerTwo::detachInterrupt()
  *                  E_NOT_OK
  *  \pre			Timer has to be in RUNNING or STOPPED STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::read(unsigned int* Microseconds)
+stdReturnType TimerOne::read(unsigned long* Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
-	int CounterValue;
-	byte PrescaleShiftScale = 0;
+	unsigned int CounterValue;
+	char PrescaleShiftScale = 0;
 
-	if(TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State) {
+	if(TIMERONE_STATE_RUNNING == State || TIMERONE_STATE_STOPPED == State) {
 		/* save current timer value */
-		CounterValue = TCNT2;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = TCNT1; }
 		switch (ClockSelectBitGroup)
 		{
-			case TIMERTWO_REG_CS_NO_PRESCALER:
+			case TIMERONE_REG_CS_NO_PRESCALER:
 				PrescaleShiftScale = 0;
 				break;
-			case TIMERTWO_REG_CS_PRESCALE_8:
+			case TIMERONE_REG_CS_PRESCALE_8:
 				PrescaleShiftScale = 3;
 				break;
-			case TIMERTWO_REG_CS_PRESCALE_32:
-				PrescaleShiftScale = 5;
-				break;
-			case TIMERTWO_REG_CS_PRESCALE_64:
+			case TIMERONE_REG_CS_PRESCALE_64:
 				PrescaleShiftScale = 6;
 				break;
-			case TIMERTWO_REG_CS_PRESCALE_128:
-				PrescaleShiftScale = 7;
-				break;
-			case TIMERTWO_REG_CS_PRESCALE_256:
+			case TIMERONE_REG_CS_PRESCALE_256:
 				PrescaleShiftScale = 8;
 				break;
-			case TIMERTWO_REG_CS_PRESCALE_1024:
+			case TIMERONE_REG_CS_PRESCALE_1024:
 				PrescaleShiftScale = 10;
 				break;
 			default:
@@ -300,9 +293,9 @@ stdReturnType TimerTwo::read(unsigned int* Microseconds)
 /******************************************************************************************************************************************************
   I S R   F U N C T I O N S
 ******************************************************************************************************************************************************/
-ISR(TIMER2_COMPA_vect)
+ISR(TIMER1_COMPA_vect)
 {
-	Timer2.TimerOverflowCallback();
+	Timer1.TimerCompareCallback();
 }
 
 

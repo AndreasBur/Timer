@@ -8,94 +8,54 @@
  *  ---------------------------------------------------------------------------------------------------------------------------------------------------
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------------------------------------*/
-/**     \file       TimerTwo.h
- *      \brief      Main header file of TimerTwo library
+/**     \file       StandardTypes.h
+ *      \brief      Main header file of standard types library
  *
- *      \details    Arduino library to use Timer two
+ *      \details    Library with standard types
  *                  
  *
  *****************************************************************************************************************************************************/
-#ifndef _TIMERTWO_H_
-#define _TIMERTWO_H_
+#ifndef _STANDARD_TYPES_H_
+#define _STANDARD_TYPES_H_
 
 /******************************************************************************************************************************************************
  * INCLUDES
  *****************************************************************************************************************************************************/
-#include "Arduino.h"
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <StandardTypes.h>
 
 
 /******************************************************************************************************************************************************
  *  LOCAL CONSTANT MACROS
  *****************************************************************************************************************************************************/
-/* Timer2 is 8 bit */
-#define TIMERTWO_NUMBER_OF_BITS						8
-#define TIMERTWO_RESOLUTION							(1UL << TIMERTWO_NUMBER_OF_BITS)
+ /* standard type for configuration */
+#define STD_ON					1u
+#define STD_OFF					0u
 
-#define TIMERTWO_REG_CS_GP							0
-#define TIMERTWO_REG_CS_GM							B111
+#define STD_NULL_CHARACTER		'\0'
+
 
 /******************************************************************************************************************************************************
  *  LOCAL FUNCTION MACROS
  *****************************************************************************************************************************************************/
+#define writeBit(Var, Bit, Value) \
+(Var = (Var & ~(1 << Bit)) | (Value << Bit))
+
+/* read Bit Group */
+#define readBitGroup(Var, BitGroupMask, BitGroupPosition) \
+(Var = ((Var & ((uint8_t)BitGroupMask)) >> BitGroupPosition))
+
+/* write Bit Group */
+#define writeBitGroup(Var, BitGroupMask, BitGroupPosition, Value) \
+(Var = ((Var & ~((uint8_t)BitGroupMask)) | ((Value << BitGroupPosition) & ((uint8_t)BitGroupMask))))
 
 
 /******************************************************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *****************************************************************************************************************************************************/
-/* Timer ISR callback function */
-typedef void (*TimerIsrCallbackF_void)(void);
-
-/* Type which describes the internal state of the TimerTwo */
+  /* standard return type for functions */
 typedef enum {
-	TIMERTWO_STATE_NONE,
-	TIMERTWO_STATE_INIT,
-	TIMERTWO_STATE_READY,
-	TIMERTWO_STATE_RUNNING,
-	TIMERTWO_STATE_STOPPED
-} TimerTwoStateType;
-
-/* Type which includes the values of the Clock Select Bit Group */
-typedef enum {
-	TIMERTWO_REG_CS_NO_CLOCK,
-	TIMERTWO_REG_CS_NO_PRESCALER,
-	TIMERTWO_REG_CS_PRESCALE_8,
-	TIMERTWO_REG_CS_PRESCALE_32,
-	TIMERTWO_REG_CS_PRESCALE_64,
-	TIMERTWO_REG_CS_PRESCALE_128,
-	TIMERTWO_REG_CS_PRESCALE_256,
-	TIMERTWO_REG_CS_PRESCALE_1024
-} TimerTwoClockSelectType;
-
-
-/******************************************************************************************************************************************************
- *  CLASS  TimerTwo
- *****************************************************************************************************************************************************/
-class TimerTwo
-{
-  private:
-	TimerTwoStateType State;
-	TimerTwoClockSelectType ClockSelectBitGroup;
-
-  public:
-    TimerTwo();
-    ~TimerTwo();
-
-	TimerIsrCallbackF_void TimerOverflowCallback;
-	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerCompareCallback = NULL);
-	stdReturnType setPeriod(long Microseconds);
-	stdReturnType start();
-	void stop();
-	stdReturnType resume();
-	stdReturnType attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback);
-	void detachInterrupt();
-	stdReturnType read(unsigned int *Microseconds);
-};
-
-/* TimerTwo will be pre-instantiated in TimerTwo source file */
-extern TimerTwo Timer2;
+    E_OK = 0,
+    E_NOT_OK = 1
+} stdReturnType;
 
 #endif
 

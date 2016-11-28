@@ -361,7 +361,7 @@ void TimerTwo::detachInterrupt()
  *                  E_NOT_OK
  *  \pre			Timer has to be in RUNNING STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::read(long* Microseconds)
+stdReturnType TimerTwo::read(unsigned int* Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
 	byte TCNT2_tmp;
@@ -402,7 +402,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 		/* if counter counting down, add top value to current value */
 		if(TCNT2_tmp < CounterValue) CounterValue = (int) (OCR2A - CounterValue) + (int) OCR2A;
 		/* transform counter value to microseconds in an efficient way */
-		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
+		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
