@@ -96,7 +96,7 @@ class TimerOne
     TimerOne();
     ~TimerOne();
 
-	TimerIsrCallbackF_void TimerOverflowCallback;
+	TimerIsrCallbackF_void TimerCompareCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
 	stdReturnType setPeriod(long);
 	stdReturnType start();

@@ -109,7 +109,7 @@ class TimerTwo
 	stdReturnType resume();
 	stdReturnType attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback);
 	void detachInterrupt();
-	stdReturnType read(long *Microseconds);
+	stdReturnType read(unsigned int *Microseconds);
 };
 
 /* TimerTwo will be pre-instantiated in TimerTwo source file */

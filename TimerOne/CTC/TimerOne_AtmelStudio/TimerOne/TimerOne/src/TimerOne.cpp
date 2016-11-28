@@ -44,7 +44,7 @@ TimerOne Timer1;              // pre-instantiate TimerOne
 TimerOne::TimerOne()
 {
 	State = TIMERONE_STATE_NONE;
-	TimerOverflowCallback = NULL;
+	TimerCompareCallback = NULL;
 	ClockSelectBitGroup = TIMERONE_REG_CS_NO_CLOCK;
 } /* TimerOne */
 
@@ -61,8 +61,8 @@ TimerOne::~TimerOne()
 /******************************************************************************************************************************************************
   init()
 ******************************************************************************************************************************************************/
-/*! \brief          initialization of the Timer2 hardware
- *  \details        this functions initializes the Timer2 hardware
+/*! \brief          initialization of the Timer1 hardware
+ *  \details        this functions initializes the Timer1 hardware
  *                  
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \param[in]      sTimerOverflowCallback      Callback function which should be called when timer overflow interrupt occurs
@@ -70,7 +70,7 @@ TimerOne::~TimerOne()
  *                  E_NOT_OK
  *  \pre			Timer has to be in NONE STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOverflowCallback)
+stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerCompareCallback)
 {
 	stdReturnType ReturnValue = E_OK;
 
@@ -87,7 +87,7 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 		writeBit(TCCR1B, WGM13, 1);
 		
 		if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
-		if(sTimerOverflowCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerOverflowCallback)) ReturnValue = E_NOT_OK;
+		if(sTimerCompareCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerCompareCallback)) ReturnValue = E_NOT_OK;
 
 		State = TIMERONE_STATE_READY;
 	} else {
@@ -100,8 +100,8 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 /******************************************************************************************************************************************************
   setPeriod()
 ******************************************************************************************************************************************************/
-/*! \brief          set period of Timer2 overflow interrupt
- *  \details        this functions sets the period of the Timer2 overflow interrupt therefore 
+/*! \brief          set period of Timer1 overflow interrupt
+ *  \details        this functions sets the period of the Timer1 overflow interrupt therefore 
  *                  prescaler and timer top value will be calculated
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \return         E_OK
@@ -154,7 +154,7 @@ stdReturnType TimerOne::start()
 		/* start counter by setting clock select register */
 		writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);
 		/* set compare interrupt, if callback is set */
-		if(TimerOverflowCallback != NULL) {
+		if(TimerCompareCallback != NULL) {
 			/* enable timer compare interrupt */
 			writeBit(TIMSK1, OCIE1A, 1);
 		}
@@ -214,10 +214,10 @@ stdReturnType TimerOne::resume()
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
-stdReturnType TimerOne::attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback)
+stdReturnType TimerOne::attachInterrupt(TimerIsrCallbackF_void sTimerCompareCallback)
 {
-	if(sTimerOverflowCallback != NULL) {
-		TimerOverflowCallback = sTimerOverflowCallback;
+	if(sTimerCompareCallback != NULL) {
+		TimerCompareCallback = sTimerCompareCallback;
 		/* enable timer compare interrupt */
 		if(State == TIMERONE_STATE_RUNNING) writeBit(TIMSK1, OCIE1A, 1);
 		return E_OK;
@@ -295,7 +295,7 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 ******************************************************************************************************************************************************/
 ISR(TIMER1_COMPA_vect)
 {
-	Timer1.TimerOverflowCallback();
+	Timer1.TimerCompareCallback();
 }
 
 

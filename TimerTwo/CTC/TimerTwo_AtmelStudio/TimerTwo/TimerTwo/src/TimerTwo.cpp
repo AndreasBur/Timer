@@ -11,7 +11,7 @@
 /**     \file       TimerTwo.c
  *      \brief      Main file of TimerTwo library
  *
- *      \details    Arduino library to use Timer two
+ *      \details    Arduino library to use Timer 2
  *                  
  *
  *****************************************************************************************************************************************************/
@@ -70,7 +70,7 @@ TimerTwo::~TimerTwo()
  *                  E_NOT_OK
  *  \pre			Timer has to be in NONE STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOverflowCallback)
+stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCompareCallback)
 {
 	stdReturnType ReturnValue = E_OK;
 
@@ -86,7 +86,7 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 	    writeBit(TCCR2B, WGM22, 0);
 		
 		if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
-		if(sTimerOverflowCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerOverflowCallback)) ReturnValue = E_NOT_OK;
+		if(sTimerCompareCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerCompareCallback)) ReturnValue = E_NOT_OK;
 
 		State = TIMERTWO_STATE_READY;
 	} else {
@@ -99,8 +99,8 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 /******************************************************************************************************************************************************
   setPeriod()
 ******************************************************************************************************************************************************/
-/*! \brief          set period of Timer2 overflow interrupt
- *  \details        this functions sets the period of the Timer2 overflow interrupt therefore 
+/*! \brief          set period of Timer2 compare interrupt
+ *  \details        this functions sets the period of the Timer2 compare interrupt therefore 
  *                  prescaler and timer top value will be calculated
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \return         E_OK
@@ -208,17 +208,17 @@ stdReturnType TimerTwo::resume()
 /******************************************************************************************************************************************************
   attachInterrupt()
 ******************************************************************************************************************************************************/
-/*! \brief          set timer copare interrupt callback
+/*! \brief          set timer compare interrupt callback
  *  \details        
  *                  
  *  \param[in]      sTimerOverflowCallback				timer compare callback function
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback)
+stdReturnType TimerTwo::attachInterrupt(TimerIsrCallbackF_void sTimerCompareCallback)
 {
-	if(sTimerOverflowCallback != NULL) {
-		TimerOverflowCallback = sTimerOverflowCallback;
+	if(sTimerCompareCallback != NULL) {
+		TimerOverflowCallback = sTimerCompareCallback;
 		/* enable timer compare interrupt */
 		if(State == TIMERTWO_STATE_RUNNING) writeBit(TIMSK2, OCIE2A, 1);
 		return E_OK;
@@ -254,7 +254,7 @@ void TimerTwo::detachInterrupt()
  *                  E_NOT_OK
  *  \pre			Timer has to be in RUNNING or STOPPED STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::read(long* Microseconds)
+stdReturnType TimerTwo::read(unsigned int* Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
 	int CounterValue;
@@ -289,7 +289,7 @@ stdReturnType TimerTwo::read(long* Microseconds)
 			default:
 				ReturnValue = E_NOT_OK;
 		}
-		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
+		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}

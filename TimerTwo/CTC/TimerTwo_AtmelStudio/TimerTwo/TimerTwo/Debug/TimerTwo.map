@@ -1,11 +1,13 @@
 Archive member included to satisfy reference by file (symbol)
 
-C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328p/avr5/crtatmega328p.o (main)
-C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
-                              C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o) (init)
-C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
-                              C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o) (yield)
+C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+                              C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o) (init)
+C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+                              C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o) (yield)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                              src/TimerTwo.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328p/avr5/crtatmega328p.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
@@ -14,6 +16,8 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
                               src/TimerTwo.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
                               src/TimerTwo.o (__do_global_ctors)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                              src/TimerTwo.o (__umulhisi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o) (__tablejump2__)
 
@@ -37,37 +41,53 @@ Discarded input sections
                 0x00000000       0x24 src/TimerTwo.o
  .text._ZN8TimerTwo15detachInterruptEv
                 0x00000000        0xc src/TimerTwo.o
- .text._ZN8TimerTwo4readEPl
-                0x00000000       0x5a src/TimerTwo.o
+ .text._ZN8TimerTwo4readEPj
+                0x00000000       0x6e src/TimerTwo.o
  .text.exit._GLOBAL__sub_D_Timer2
                 0x00000000        0x2 src/TimerTwo.o
  .rodata.CSWTCH.19
                 0x00000000        0x7 src/TimerTwo.o
- .text          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .data          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .bss           0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .text.atexit   0x00000000        0x6 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .text          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
- .data          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
- .bss           0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
- .text.millis   0x00000000       0x18 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
- .text.micros   0x00000000       0x4a C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
- .text.delay    0x00000000       0x50 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .text          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .data          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .bss           0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .text.atexit   0x00000000        0x6 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .text          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .data          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .bss           0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .text.millis   0x00000000       0x18 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .text.micros   0x00000000       0x4a C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .text.delay    0x00000000       0x50 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
  .text.delayMicroseconds
-                0x00000000       0x14 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
- .text          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .data          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .bss           0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .text.__empty  0x00000000        0x2 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .debug_info    0x00000000       0x3e C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .debug_abbrev  0x00000000       0x2a C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+                0x00000000       0x14 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .text          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .data          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .bss           0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .text.__empty  0x00000000        0x2 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .debug_info    0x00000000       0x3e C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .debug_abbrev  0x00000000       0x2a C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
  .debug_aranges
-                0x00000000       0x20 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .debug_ranges  0x00000000       0x10 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .debug_line    0x00000000       0x41 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .debug_str     0x00000000      0x12c C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .comment       0x00000000       0x31 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
- .debug_frame   0x00000000       0x24 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+                0x00000000       0x20 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .debug_ranges  0x00000000       0x10 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .debug_line    0x00000000       0x41 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .debug_str     0x00000000      0x12c C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .comment       0x00000000       0x31 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .debug_frame   0x00000000       0x24 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.div
+                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
@@ -132,6 +152,22 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.mul
+                0x00000000       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
@@ -168,7 +204,7 @@ LOAD Sketch.o
 LOAD src/TimerTwo.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
-LOAD C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a
+LOAD C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a
 END GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
@@ -386,15 +422,15 @@ END GROUP
  .text.startup._GLOBAL__sub_I_Timer2
                 0x000002f4        0xe src/TimerTwo.o
  .text.initVariant
-                0x00000302        0x2 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+                0x00000302        0x2 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
                 0x00000302                initVariant
  .text.startup.main
-                0x00000304       0x1e C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+                0x00000304       0x1e C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
                 0x00000304                main
  .text.__vector_16
-                0x00000322       0x94 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                0x00000322       0x94 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                 0x00000322                __vector_16
- .text.init     0x000003b6       0x76 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .text.init     0x000003b6       0x76 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                 0x000003b6                init
  .text.libgcc   0x0000042c        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
                 0x0000042c                __tablejump2__
@@ -443,12 +479,12 @@ END GROUP
  .bss.Timer2    0x00800100        0x4 src/TimerTwo.o
                 0x00800100                Timer2
  .bss.timer0_fract
-                0x00800104        0x1 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                0x00800104        0x1 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
  .bss.timer0_millis
-                0x00800105        0x4 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                0x00800105        0x4 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                 0x00800105                timer0_millis
  .bss.timer0_overflow_count
-                0x00800109        0x4 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                0x00800109        0x4 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                 0x00800109                timer0_overflow_count
  *(COMMON)
                 0x0080010d                PROVIDE (__bss_end, .)
@@ -499,14 +535,13 @@ END GROUP
 .stab.indexstr
  *(.stab.indexstr)
 
-.comment        0x00000000       0x60
+.comment        0x00000000       0x30
  *(.comment)
  .comment       0x00000000       0x30 Sketch.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 src/TimerTwo.o
- .comment       0x00000030       0x30 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
-                                 0x31 (size before relaxing)
- .comment       0x00000060       0x31 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .comment       0x00000030       0x31 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .comment       0x00000030       0x31 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
@@ -535,9 +570,9 @@ END GROUP
  .debug_aranges
                 0x00000028       0x80 src/TimerTwo.o
  .debug_aranges
-                0x000000a8       0x30 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+                0x000000a8       0x30 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
  .debug_aranges
-                0x000000d8       0x48 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                0x000000d8       0x48 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -546,46 +581,46 @@ END GROUP
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x3e0 Sketch.o
  .debug_info    0x000003e0      0x7cf src/TimerTwo.o
- .debug_info    0x00000baf      0x1f0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .debug_info    0x00000d9f      0x2bd C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_info    0x00000baf      0x1f0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_info    0x00000d9f      0x2bd C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_abbrev   0x00000000      0x68c
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x181 Sketch.o
  .debug_abbrev  0x00000181      0x2ef src/TimerTwo.o
- .debug_abbrev  0x00000470       0xd7 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .debug_abbrev  0x00000547      0x145 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_abbrev  0x00000470       0xd7 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_abbrev  0x00000547      0x145 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_line     0x00000000      0x8fd
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x122 Sketch.o
  .debug_line    0x00000122      0x3f3 src/TimerTwo.o
- .debug_line    0x00000515      0x159 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .debug_line    0x0000066e      0x28f C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_line    0x00000515      0x159 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_line    0x0000066e      0x28f C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
-.debug_frame    0x00000000      0x27c
+.debug_frame    0x00000000      0x290
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 Sketch.o
- .debug_frame   0x00000034      0x148 src/TimerTwo.o
- .debug_frame   0x0000017c       0x44 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .debug_frame   0x000001c0       0xbc C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_frame   0x00000034      0x15c src/TimerTwo.o
+ .debug_frame   0x00000190       0x44 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_frame   0x000001d4       0xbc C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
-.debug_str      0x00000000      0x7c5
+.debug_str      0x00000000      0x7d9
  *(.debug_str)
- .debug_str     0x00000000      0x4be Sketch.o
-                                0x555 (size before relaxing)
- .debug_str     0x000004be      0x114 src/TimerTwo.o
-                                0x65b (size before relaxing)
- .debug_str     0x000005d2       0xa4 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_str     0x00000000      0x4d3 Sketch.o
+                                0x554 (size before relaxing)
+ .debug_str     0x000004d3      0x113 src/TimerTwo.o
+                                0x659 (size before relaxing)
+ .debug_str     0x000005e6       0xa4 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
                                 0x24b (size before relaxing)
- .debug_str     0x00000676      0x14f C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_str     0x0000068a      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                                 0x22e (size before relaxing)
 
-.debug_loc      0x00000000      0x7ce
+.debug_loc      0x00000000      0x800
  *(.debug_loc)
- .debug_loc     0x00000000      0x55f src/TimerTwo.o
- .debug_loc     0x0000055f       0x26 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .debug_loc     0x00000585      0x249 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_loc     0x00000000      0x591 src/TimerTwo.o
+ .debug_loc     0x00000591       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_loc     0x000005b7      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -609,8 +644,8 @@ END GROUP
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 Sketch.o
  .debug_ranges  0x00000018       0x70 src/TimerTwo.o
- .debug_ranges  0x00000088       0x20 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
- .debug_ranges  0x000000a8       0x38 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .debug_ranges  0x00000088       0x20 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_ranges  0x000000a8       0x38 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_macro
  *(.debug_macro)

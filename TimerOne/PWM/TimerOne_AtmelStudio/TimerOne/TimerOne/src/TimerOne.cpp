@@ -61,8 +61,8 @@ TimerOne::~TimerOne()
 /******************************************************************************************************************************************************
   init()
 ******************************************************************************************************************************************************/
-/*! \brief          initialization of the Timer2 hardware
- *  \details        this functions initializes the Timer2 hardware
+/*! \brief          initialization of the Timer1 hardware
+ *  \details        this functions initializes the Timer1 hardware
  *                  
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \param[in]      sTimerOverflowCallback      Callback function which should be called when timer overflow interrupt occurs
@@ -100,8 +100,8 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 /******************************************************************************************************************************************************
   setPeriod()
 ******************************************************************************************************************************************************/
-/*! \brief          set period of Timer2 overflow interrupt
- *  \details        this functions sets the period of the Timer2 overflow interrupt therefore 
+/*! \brief          set period of Timer1 overflow interrupt
+ *  \details        this functions sets the period of the Timer1 overflow interrupt therefore 
  *                  prescaler and timer top value will be calculated
  *  \param[in]      Microseconds				period of the timer overflow interrupt
  *  \return         E_OK
@@ -397,7 +397,7 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 		/* wait one counter tick, needed to find out counter counting up or down */
 		do { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { TCNT1_tmp = TCNT1; }} while (TCNT1_tmp == CounterValue);
 		/* if counter counting down, add top value to current value */
-		if(TCNT1_tmp < CounterValue) { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = (int) (ICR1 - CounterValue) + (int) ICR1; } }
+		if(TCNT1_tmp < CounterValue) { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = (int) (ICR1 - CounterValue) + (int) ICR1; }}
 		/* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
 	} else {

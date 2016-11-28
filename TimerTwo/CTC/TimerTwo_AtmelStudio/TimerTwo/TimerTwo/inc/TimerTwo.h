@@ -84,14 +84,14 @@ class TimerTwo
     ~TimerTwo();
 
 	TimerIsrCallbackF_void TimerOverflowCallback;
-	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerOverflowCallback = NULL);
+	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerCompareCallback = NULL);
 	stdReturnType setPeriod(long Microseconds);
 	stdReturnType start();
 	void stop();
 	stdReturnType resume();
 	stdReturnType attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback);
 	void detachInterrupt();
-	stdReturnType read(long *Microseconds);
+	stdReturnType read(unsigned int *Microseconds);
 };
 
 /* TimerTwo will be pre-instantiated in TimerTwo source file */

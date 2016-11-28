@@ -9,25 +9,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .bss          0000000d  00800100  00800100  000004b0  2**0
                   ALLOC
-  3 .comment      00000060  00000000  00000000  000004b0  2**0
+  3 .comment      00000030  00000000  00000000  000004b0  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000510  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000004e0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000120  00000000  00000000  00000550  2**0
+  5 .debug_aranges 00000120  00000000  00000000  00000520  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000105c  00000000  00000000  00000670  2**0
+  6 .debug_info   0000105c  00000000  00000000  00000640  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000068c  00000000  00000000  000016cc  2**0
+  7 .debug_abbrev 0000068c  00000000  00000000  0000169c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000008fd  00000000  00000000  00001d58  2**0
+  8 .debug_line   000008fd  00000000  00000000  00001d28  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000027c  00000000  00000000  00002658  2**2
+  9 .debug_frame  00000290  00000000  00000000  00002628  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000007c5  00000000  00000000  000028d4  2**0
+ 10 .debug_str    000007d9  00000000  00000000  000028b8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000007ce  00000000  00000000  00003099  2**0
+ 11 .debug_loc    00000800  00000000  00000000  00003091  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000e0  00000000  00000000  00003867  2**0
+ 12 .debug_ranges 000000e0  00000000  00000000  00003891  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -143,7 +143,7 @@ void loop() {
   da:	08 95       	ret
 
 000000dc <_ZN8TimerTwo9setPeriodEl>:
-		*Microseconds = ((CounterValue * 1000L) / (F_CPU / 1000L)) << PrescaleShiftScale;
+		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;
 	}
