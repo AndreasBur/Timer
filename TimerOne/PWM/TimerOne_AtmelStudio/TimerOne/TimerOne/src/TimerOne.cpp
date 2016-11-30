@@ -107,31 +107,38 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
-stdReturnType TimerOne::setPeriod(long Microseconds)
+stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
 	/* the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
-	unsigned long TimerCycles = (F_CPU / 2000000) * Microseconds;
+	unsigned long TimerCycles;
+    
+    if(Microseconds <= ((TIMERONE_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER * 2)) {
+        /* calculate timer cycles to reach timer period */
+        TimerCycles = (F_CPU / 2000000) * Microseconds;
+        /* calculate timer prescaler */
+        if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;
+        else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_8;
+        else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_64;
+        else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_256;
+        else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
+        else {
+            /* request was out of bounds, set as maximum */
+            TimerCycles = TIMERONE_RESOLUTION - 1;
+            ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
+            ReturnValue = E_NOT_OK;
+        }
+        /* ICR1 is TOP in phase correct pwm mode */
+        ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { ICR1 = TimerCycles; }
 
-	if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;
-	else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_8;
-	else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_64;
-	else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_256;
-	else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
-	else {
-		/* request was out of bounds, set as maximum */
-		TimerCycles = TIMERONE_RESOLUTION - 1;
-		ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
-		ReturnValue = E_NOT_OK;
-	}
-	/* ICR1 is TOP in phase correct pwm mode */
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { ICR1 = TimerCycles; }
-
-	if(TIMERONE_STATE_RUNNING == State)
-	{
-		/* reset clock select register, and starts the clock */
-		writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
-	}
+        if(TIMERONE_STATE_RUNNING == State)
+        {
+            /* reset clock select register, and starts the clock */
+            writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
+        }
+    } else {
+        ReturnValue = E_NOT_OK;
+    }
 	return ReturnValue;
 } /* setPeriod */
 
@@ -141,22 +148,19 @@ stdReturnType TimerOne::setPeriod(long Microseconds)
 ******************************************************************************************************************************************************/
 /*! \brief          enable Pwm on given Pin
  *  \details        this function enables Pwm on given Pin with given duty cycle
- *                  period of timer can also be set
+ *                  
  *  \param[in]      PwmPin					pin where pwm should be enabled
  *  \param[in]      DutyCycle				duty cycle of pwm
- *  \param[in]      Microseconds			period of the timer overflow interrupt
  *  \return         E_OK
  *                  E_NOT_OK
  *  \pre			Timer has to be in READY, RUNNING or STOPPED STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerOne::enablePwm(TimerOnePwmPinType PwmPin, unsigned int DutyCycle, long Microseconds) 
+stdReturnType TimerOne::enablePwm(TimerOnePwmPinType PwmPin, unsigned int DutyCycle) 
 {
 	stdReturnType ReturnValue = E_OK;
 
 	if(TIMERONE_STATE_READY == State || TIMERONE_STATE_RUNNING == State || TIMERONE_STATE_STOPPED == State)
-	{	/* if optional parameter is set, set period of timer overflow interrupt */
-		if(Microseconds > 0) if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
-
+	{
 		if(TIMERONE_PWM_PIN_9 == PwmPin) {
 			pinMode(TIMERONE_PWM_PIN_9, OUTPUT);
 			/* activate compare output mode in timer control register */

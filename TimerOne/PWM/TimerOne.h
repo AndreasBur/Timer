@@ -44,6 +44,7 @@
 #define TIMERONE_REG_CS_GP							0
 #define TIMERONE_REG_CS_GM							B111
 
+#define TIMERONE_MAX_PRESCALER                      1024
 
 /******************************************************************************************************************************************************
  *  LOCAL FUNCTION MACROS

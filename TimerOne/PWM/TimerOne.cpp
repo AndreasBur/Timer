@@ -111,27 +111,34 @@ stdReturnType TimerOne::setPeriod(long Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
 	/* the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
-	unsigned long TimerCycles = (F_CPU / 2000000) * Microseconds;
+	unsigned long TimerCycles;
+    
+    if(Microseconds <= ((TIMERONE_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER * 2) {
+        /*  */
+        TimerCycles = (F_CPU / 2000000) * Microseconds;
+        
+        if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;
+        else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_8;
+        else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_64;
+        else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_256;
+        else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
+        else {
+            /* request was out of bounds, set as maximum */
+            TimerCycles = TIMERONE_RESOLUTION - 1;
+            ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
+            ReturnValue = E_NOT_OK;
+        }
+        /* ICR1 is TOP in phase correct pwm mode */
+        ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { ICR1 = TimerCycles; }
 
-	if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;
-	else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_8;
-	else if((TimerCycles >>= 3) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_64;
-	else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_256;
-	else if((TimerCycles >>= 2) < TIMERONE_RESOLUTION) ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
-	else {
-		/* request was out of bounds, set as maximum */
-		TimerCycles = TIMERONE_RESOLUTION - 1;
-		ClockSelectBitGroup = TIMERONE_REG_CS_PRESCALE_1024;
-		ReturnValue = E_NOT_OK;
-	}
-	/* ICR1 is TOP in phase correct pwm mode */
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { ICR1 = TimerCycles; }
-
-	if(TIMERONE_STATE_RUNNING == State)
-	{
-		/* reset clock select register, and starts the clock */
-		writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
-	}
+        if(TIMERONE_STATE_RUNNING == State)
+        {
+            /* reset clock select register, and starts the clock */
+            writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
+        }
+    } else {
+        ReturnValue = E_NOT_OK;
+    }
 	return ReturnValue;
 } /* setPeriod */
 

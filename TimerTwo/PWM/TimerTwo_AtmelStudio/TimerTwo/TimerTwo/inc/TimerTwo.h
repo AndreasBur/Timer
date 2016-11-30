@@ -101,7 +101,7 @@ class TimerTwo
 	TimerIsrCallbackF_void TimerOverflowCallback;
 	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerOverflowCallback = NULL);
 	stdReturnType setPeriod(long Microseconds);
-	stdReturnType enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCylce, long Microseconds = -1);
+	stdReturnType enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCylce);
 	stdReturnType disablePwm(TimerTwoPwmPinType PwmPin);
 	stdReturnType setPwmDuty(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle);
 	stdReturnType start();

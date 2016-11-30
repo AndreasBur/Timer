@@ -26,12 +26,13 @@
 /******************************************************************************************************************************************************
  * GLOBAL DATA
  *****************************************************************************************************************************************************/
-TimerTwo Timer2;              // pre-instantiate TimerTwo
+TimerTwo& Timer2 = TimerTwo::instance();              // pre-instantiate TimerTwo
 
 
 /******************************************************************************************************************************************************
- * P U B L I C   F U N C T I O N S
+ * C O N S T R U C T O R S
  *****************************************************************************************************************************************************/
+
 
 /******************************************************************************************************************************************************
   CONSTRUCTOR OF TimerTwo
@@ -57,6 +58,20 @@ TimerTwo::~TimerTwo()
 
 } /* ~TimerTwo */
 
+
+/******************************************************************************************************************************************************
+  COPY CONSTRUCTOR OF TimerTwo
+******************************************************************************************************************************************************/
+TimerTwo& TimerTwo::instance()
+{
+	static TimerTwo SingletonInstance;
+	return SingletonInstance;
+}
+
+
+/******************************************************************************************************************************************************
+ * P U B L I C   F U N C T I O N S
+ *****************************************************************************************************************************************************/
 
 /******************************************************************************************************************************************************
   init()
@@ -106,33 +121,37 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
  *  \return         E_OK
  *                  E_NOT_OK
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::setPeriod(long Microseconds)
+stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
-	/*  */
-	unsigned long TimerCycles = (F_CPU / 1000000) * Microseconds;
+	unsigned long TimerCycles;
 
-	if(TimerCycles < TIMERTWO_RESOLUTION)              ClockSelectBitGroup = TIMERTWO_REG_CS_NO_PRESCALER;
-	else if((TimerCycles >>= 3) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_8;
-	else if((TimerCycles >>= 2) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_32;
-	else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_64;
-	else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_128;
-	else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_256;
-	else if((TimerCycles >>= 2) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
-	else {
-		/* request was out of bounds, set as maximum */
-		TimerCycles = TIMERTWO_RESOLUTION - 1;
-		ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
-		ReturnValue = E_NOT_OK;
-	}
-	/* OCR2A is TOP in mode 2: clear timer on compare match (CTC) */
-	OCR2A = TimerCycles;
+    if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER)) {
+        /* calculate timer cycles to reach timer period */
+        TimerCycles = (F_CPU / 1000000) * Microseconds;
+        /* calculate timer prescaler */
+        if(TimerCycles < TIMERTWO_RESOLUTION)              ClockSelectBitGroup = TIMERTWO_REG_CS_NO_PRESCALER;
+        else if((TimerCycles >>= 3) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_8;
+        else if((TimerCycles >>= 2) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_32;
+        else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_64;
+        else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_128;
+        else if((TimerCycles >>= 1) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_256;
+        else if((TimerCycles >>= 2) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
+        else {
+            /* request was out of bounds, set as maximum */
+            TimerCycles = TIMERTWO_RESOLUTION - 1;
+            ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_1024;
+            ReturnValue = E_NOT_OK;
+        }
+        /* OCR2A is TOP in mode 2: clear timer on compare match (CTC) */
+        OCR2A = TimerCycles;
 
-	if(TIMERTWO_STATE_RUNNING == State)
-	{
-		/* reset clock select register, and starts the clock */
-		writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, ClockSelectBitGroup);						
-	}
+        if(TIMERTWO_STATE_RUNNING == State)
+        {
+            /* reset clock select register, and starts the clock */
+            writeBitGroup(TCCR2B, TIMERTWO_REG_CS_GM, TIMERTWO_REG_CS_GP, ClockSelectBitGroup);						
+        }
+    }
 	return ReturnValue;
 } /* setPeriod */
 
@@ -289,6 +308,7 @@ stdReturnType TimerTwo::read(unsigned int* Microseconds)
 			default:
 				ReturnValue = E_NOT_OK;
 		}
+        /* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
 	} else {
 		ReturnValue = E_NOT_OK;

@@ -142,22 +142,19 @@ stdReturnType TimerTwo::setPeriod(long Microseconds)
 ******************************************************************************************************************************************************/
 /*! \brief          enable Pwm on given Pin
  *  \details        this function enables Pwm on given Pin with given duty cycle
- *                  period of timer can also be set
+ *
  *  \param[in]      PwmPin					pin where pwm should be enabled
  *  \param[in]      DutyCycle				duty cycle of pwm
- *  \param[in]      Microseconds			period of the timer overflow interrupt
  *  \return         E_OK
  *                  E_NOT_OK
  *  \pre			Timer has to be in READY, RUNNING or STOPPED STATE
  *****************************************************************************************************************************************************/
-stdReturnType TimerTwo::enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle, long Microseconds) 
+stdReturnType TimerTwo::enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle) 
 {
 	stdReturnType ReturnValue = E_OK;
 
 	if(TIMERTWO_STATE_READY == State || TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State)
-	{	/* if optional parameter is set, set period of timer overflow interrupt */
-		if(Microseconds > 0) if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
-
+	{	
 		if(TIMERTWO_PWM_PIN_3 == PwmPin) {
 			pinMode(TIMERTWO_PWM_PIN_3, OUTPUT);
 			/* activate compare output mode in timer control register */

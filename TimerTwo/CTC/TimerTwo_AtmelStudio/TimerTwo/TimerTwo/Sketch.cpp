@@ -12,7 +12,6 @@
 
 void setup() {
   // put your setup code here, to run once:
-  Timer2.init(1000);
   Timer2.start();
 }
 

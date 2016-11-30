@@ -37,6 +37,8 @@
 #define TIMERTWO_REG_CS_GP							0
 #define TIMERTWO_REG_CS_GM							B111
 
+#define TIMERONE_MAX_PRESCALER						1024
+
 /******************************************************************************************************************************************************
  *  LOCAL FUNCTION MACROS
  *****************************************************************************************************************************************************/
@@ -76,16 +78,18 @@ typedef enum {
 class TimerTwo
 {
   private:
+  	TimerTwo();
+  	~TimerTwo();
+  	TimerTwo(const TimerTwo&);
+
 	TimerTwoStateType State;
 	TimerTwoClockSelectType ClockSelectBitGroup;
 
   public:
-    TimerTwo();
-    ~TimerTwo();
-
+	static TimerTwo& instance();
 	TimerIsrCallbackF_void TimerOverflowCallback;
 	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerCompareCallback = NULL);
-	stdReturnType setPeriod(long Microseconds);
+	stdReturnType setPeriod(unsigned long Microseconds);
 	stdReturnType start();
 	void stop();
 	stdReturnType resume();
@@ -95,7 +99,7 @@ class TimerTwo
 };
 
 /* TimerTwo will be pre-instantiated in TimerTwo source file */
-extern TimerTwo Timer2;
+extern TimerTwo& Timer2;
 
 #endif
 

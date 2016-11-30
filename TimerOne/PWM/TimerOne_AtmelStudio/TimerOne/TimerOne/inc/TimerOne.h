@@ -44,6 +44,7 @@
 #define TIMERONE_REG_CS_GP							0
 #define TIMERONE_REG_CS_GM							B111
 
+#define TIMERONE_MAX_PRESCALER                      1024
 
 /******************************************************************************************************************************************************
  *  LOCAL FUNCTION MACROS
@@ -98,8 +99,8 @@ class TimerOne
 
 	TimerIsrCallbackF_void TimerOverflowCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
-	stdReturnType setPeriod(long);
-	stdReturnType enablePwm(TimerOnePwmPinType, unsigned int, long = -1);
+	stdReturnType setPeriod(unsigned long);
+	stdReturnType enablePwm(TimerOnePwmPinType, unsigned int);
 	stdReturnType disablePwm(TimerOnePwmPinType);
 	stdReturnType setPwmDuty(TimerOnePwmPinType, unsigned int);
 	stdReturnType start();

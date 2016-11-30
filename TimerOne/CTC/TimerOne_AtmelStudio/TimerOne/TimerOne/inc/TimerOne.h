@@ -34,16 +34,10 @@
 #define TIMERONE_NUMBER_OF_BITS						16
 #define TIMERONE_RESOLUTION							(1UL << TIMERONE_NUMBER_OF_BITS)
 
-/* OC1A Chip Pin 15, Pin name PB1 */
-#define TIMERONE_A_ARDUINO_PIN						9
-//#define TIMERONE_A_PORT_PIN						PORTB1
-/* OC1B Chip Pin 16, Pin name PB2 */
-#define TIMERONE_B_ARDUINO_PIN						10
-//#define TIMERONE_A_PORT_PIN						PORTB2
-
 #define TIMERONE_REG_CS_GP							0
 #define TIMERONE_REG_CS_GM							B111
 
+#define TIMERONE_MAX_PRESCALER						1024
 
 /******************************************************************************************************************************************************
  *  LOCAL FUNCTION MACROS
@@ -98,7 +92,7 @@ class TimerOne
 
 	TimerIsrCallbackF_void TimerCompareCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
-	stdReturnType setPeriod(long);
+	stdReturnType setPeriod(unsigned long);
 	stdReturnType start();
 	void stop();
 	stdReturnType resume();
