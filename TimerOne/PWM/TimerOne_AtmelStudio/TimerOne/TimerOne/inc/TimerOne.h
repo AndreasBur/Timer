@@ -89,14 +89,15 @@ typedef enum {
 class TimerOne
 {
   private:
+    TimerOne();
+    ~TimerOne();
+	TimerOne(const TimerOne&);
 	TimerOneStateType State;
 	TimerOneClockSelectType ClockSelectBitGroup;
 	unsigned int PwmPeriod;
 
   public:
-    TimerOne();
-    ~TimerOne();
-
+	static TimerOne& instance();
 	TimerIsrCallbackF_void TimerOverflowCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
 	stdReturnType setPeriod(unsigned long);
@@ -112,7 +113,7 @@ class TimerOne
 };
 
 /* TimerOne will be pre-instantiated in TimerOne source file */
-extern TimerOne Timer1;
+extern TimerOne& Timer1;
 
 #endif
 

@@ -69,12 +69,6 @@ typedef enum {
 	TIMERONE_REG_CS_PRESCALE_1024
 } TimerOneClockSelectType;
 
-/* Type which includes the Pwm Pins */
-typedef enum {
-	TIMERONE_PWM_PIN_9 = TIMERONE_A_ARDUINO_PIN,
-	TIMERONE_PWM_PIN_10 = TIMERONE_B_ARDUINO_PIN
-} TimerOnePwmPinType;
-
 
 /******************************************************************************************************************************************************
  *  CLASS  TimerOne
@@ -82,14 +76,15 @@ typedef enum {
 class TimerOne
 {
   private:
+    TimerOne();
+    ~TimerOne();
+    TimerOne(const TimerOne&);
 	TimerOneStateType State;
 	TimerOneClockSelectType ClockSelectBitGroup;
 	unsigned int PwmPeriod;
 
   public:
-    TimerOne();
-    ~TimerOne();
-
+    static TimerOne& instance();
 	TimerIsrCallbackF_void TimerCompareCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
 	stdReturnType setPeriod(unsigned long);
@@ -102,7 +97,7 @@ class TimerOne
 };
 
 /* TimerOne will be pre-instantiated in TimerOne source file */
-extern TimerOne Timer1;
+extern TimerOne& Timer1;
 
 #endif
 

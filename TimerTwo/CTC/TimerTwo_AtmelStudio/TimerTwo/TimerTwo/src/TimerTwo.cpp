@@ -33,7 +33,6 @@ TimerTwo& Timer2 = TimerTwo::instance();              // pre-instantiate TimerTw
  * C O N S T R U C T O R S
  *****************************************************************************************************************************************************/
 
-
 /******************************************************************************************************************************************************
   CONSTRUCTOR OF TimerTwo
 ******************************************************************************************************************************************************/
@@ -126,7 +125,7 @@ stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
 	stdReturnType ReturnValue = E_OK;
 	unsigned long TimerCycles;
 
-    if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER)) {
+    if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERTWO_MAX_PRESCALER)) {
         /* calculate timer cycles to reach timer period */
         TimerCycles = (F_CPU / 1000000) * Microseconds;
         /* calculate timer prescaler */

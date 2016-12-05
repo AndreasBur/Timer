@@ -44,6 +44,7 @@
 #define TIMERTWO_REG_CS_GP							0
 #define TIMERTWO_REG_CS_GM							B111
 
+#define TIMERTWO_MAX_PRESCALER						1024
 
 /******************************************************************************************************************************************************
  *  LOCAL FUNCTION MACROS
@@ -90,30 +91,32 @@ typedef enum {
 class TimerTwo
 {
   private:
+  	TimerTwo();
+  	~TimerTwo();
+  	TimerTwo(const TimerTwo&);
+
 	TimerTwoStateType State;
 	TimerTwoClockSelectType ClockSelectBitGroup;
 	unsigned int PwmPeriod;
 
   public:
-    TimerTwo();
-    ~TimerTwo();
-
+	static TimerTwo& instance();
 	TimerIsrCallbackF_void TimerOverflowCallback;
-	stdReturnType init(long Microseconds = 1000, TimerIsrCallbackF_void sTimerOverflowCallback = NULL);
-	stdReturnType setPeriod(long Microseconds);
-	stdReturnType enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCylce);
-	stdReturnType disablePwm(TimerTwoPwmPinType PwmPin);
-	stdReturnType setPwmDuty(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle);
+	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
+	stdReturnType setPeriod(unsigned long);
+	stdReturnType enablePwm(TimerTwoPwmPinType, unsigned int);
+	stdReturnType disablePwm(TimerTwoPwmPinType);
+	stdReturnType setPwmDuty(TimerTwoPwmPinType, unsigned int);
 	stdReturnType start();
 	void stop();
 	stdReturnType resume();
-	stdReturnType attachInterrupt(TimerIsrCallbackF_void sTimerOverflowCallback);
+	stdReturnType attachInterrupt(TimerIsrCallbackF_void);
 	void detachInterrupt();
-	stdReturnType read(unsigned int *Microseconds);
+	stdReturnType read(unsigned int*);
 };
 
 /* TimerTwo will be pre-instantiated in TimerTwo source file */
-extern TimerTwo Timer2;
+extern TimerTwo& Timer2;
 
 #endif
 
