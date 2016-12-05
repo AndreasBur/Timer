@@ -124,11 +124,11 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
 stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
-	/* the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
 	unsigned long TimerCycles;
+    
     /* was request out of bounds? */
 	if(Microseconds <= ((TIMERONE_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER)) {
-        /* calculate timer cycles to reach timer period */
+        /* calculate timer cycles to reach timer period, the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
 		TimerCycles = (F_CPU / 1000000) * Microseconds;
         /* calculate timer prescaler */
 		if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;

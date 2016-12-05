@@ -123,11 +123,11 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
 {
 	stdReturnType ReturnValue = E_OK;
-	/* the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
 	unsigned long TimerCycles;
 
+    /* was request out of bounds? */
     if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERTWO_MAX_PRESCALER * 2)) {
-        /* calculate timer cycles to reach timer period */
+        /* calculate timer cycles to reach timer period, the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
         TimerCycles = (F_CPU / 2000000) * Microseconds;
         /* calculate timer prescaler */
         if(TimerCycles < TIMERTWO_RESOLUTION)              ClockSelectBitGroup = TIMERTWO_REG_CS_NO_PRESCALER;

@@ -125,6 +125,7 @@ stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
 	stdReturnType ReturnValue = E_OK;
 	unsigned long TimerCycles;
 
+    /* was request out of bounds? */
     if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERTWO_MAX_PRESCALER)) {
         /* calculate timer cycles to reach timer period */
         TimerCycles = (F_CPU / 1000000) * Microseconds;
