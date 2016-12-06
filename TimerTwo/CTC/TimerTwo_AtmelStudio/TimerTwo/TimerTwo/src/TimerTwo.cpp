@@ -63,7 +63,7 @@ TimerTwo::~TimerTwo()
 ******************************************************************************************************************************************************/
 TimerTwo& TimerTwo::instance()
 {
-	static TimerTwo SingletonInstance;
+	static TimerTwo SingletonInstance();
 	return SingletonInstance;
 }
 
