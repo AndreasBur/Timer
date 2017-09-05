@@ -86,9 +86,10 @@ TimerOne& TimerOne::instance()
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerCompareCallback)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERONE_STATE_NONE == State) {
+        ReturnValue = E_OK;
 		State = TIMERONE_STATE_INIT;
 		/* clear control register */
 	    TCCR1A = 0;
@@ -100,14 +101,12 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
 	    writeBit(TCCR1B, WGM12, 1);
 		writeBit(TCCR1B, WGM13, 1);
 		
-		if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
-		if(sTimerCompareCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerCompareCallback)) ReturnValue = E_NOT_OK;
+		if(setPeriod(Microseconds) == E_NOT_OK) ReturnValue = E_NOT_OK;
+		if(sTimerCompareCallback != NULL) if(attachInterrupt(sTimerCompareCallback) == E_NOT_OK) ReturnValue = E_NOT_OK;
 
 		State = TIMERONE_STATE_READY;
-	} else {
-		ReturnValue = E_NOT_OK;
-	}
-		return ReturnValue;
+	} 
+	return ReturnValue;
 } /* init */
 
 
@@ -123,11 +122,12 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long TimerCycles;
     
     /* was request out of bounds? */
 	if(Microseconds <= ((TIMERONE_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER)) {
+        ReturnValue = E_OK;
         /* calculate timer cycles to reach timer period, the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
 		TimerCycles = (F_CPU / 1000000) * Microseconds;
         /* calculate timer prescaler */
@@ -150,8 +150,6 @@ stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
 			/* reset clock select register, and starts the clock */
 			writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
 		}
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* setPeriod */
@@ -276,12 +274,13 @@ void TimerOne::detachInterrupt()
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::read(unsigned long* Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned int CounterValue;
 	char PrescaleShiftScale = 0;
 
 	if(TIMERONE_STATE_RUNNING == State || TIMERONE_STATE_STOPPED == State) {
-		/* save current timer value */
+		ReturnValue = E_OK;
+        /* save current timer value */
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = TCNT1; }
 		switch (ClockSelectBitGroup)
 		{
@@ -305,8 +304,6 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 		}
 		/* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* read */

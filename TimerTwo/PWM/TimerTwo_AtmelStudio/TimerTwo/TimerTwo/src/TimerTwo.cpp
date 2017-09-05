@@ -86,9 +86,10 @@ TimerTwo& TimerTwo::instance()
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOverflowCallback)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERTWO_STATE_NONE == State) {
+        ReturnValue = E_OK;
 		State = TIMERTWO_STATE_INIT;
 		/* clear control register */
 	    TCCR2A = 0;
@@ -103,8 +104,6 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 		if(sTimerOverflowCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerOverflowCallback)) ReturnValue = E_NOT_OK;
 
 		State = TIMERTWO_STATE_READY;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 		return ReturnValue;
 } /* init */
@@ -122,13 +121,14 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long TimerCycles;
 
     /* was request out of bounds? */
-    if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERTWO_MAX_PRESCALER * 2)) {
-        /* calculate timer cycles to reach timer period, the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
-        TimerCycles = (F_CPU / 2000000) * Microseconds;
+    if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERTWO_MAX_PRESCALER)) {
+        ReturnValue = E_OK;
+        /* calculate timer cycles to reach timer period */
+        TimerCycles = (F_CPU / 1000000) * Microseconds;
         /* calculate timer prescaler */
         if(TimerCycles < TIMERTWO_RESOLUTION)              ClockSelectBitGroup = TIMERTWO_REG_CS_NO_PRESCALER;
         else if((TimerCycles >>= 3) < TIMERTWO_RESOLUTION) ClockSelectBitGroup = TIMERTWO_REG_CS_PRESCALE_8;
@@ -170,24 +170,21 @@ stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::enablePwm(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle) 
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERTWO_STATE_READY == State || TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State)
 	{	
 		if(TIMERTWO_PWM_PIN_3 == PwmPin) {
+            ReturnValue = E_OK;
 			pinMode(TIMERTWO_PWM_PIN_3, OUTPUT);
 			/* activate compare output mode in timer control register */
 			writeBit(TCCR2A, COM2B1, 1);
-		} else {
-			ReturnValue = E_NOT_OK;
 		}
 		/*if(TIMERTWO_PWM_PIN_11 == PwmPin) {
 		pinMode(TIMERTWO_PWM_PIN_11, OUTPUT);
 		writeBit(TCCR2A, COM2A1, 1);
 		}*/
-		if(E_NOT_OK == setPwmDuty(PwmPin, DutyCycle)) ReturnValue = E_NOT_OK;
-	} else {
-		ReturnValue = E_NOT_OK;
+		if(setPwmDuty(PwmPin, DutyCycle) == E_NOT_OK) ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* enablePwm */
@@ -207,9 +204,9 @@ stdReturnType TimerTwo::disablePwm(TimerTwoPwmPinType PwmPin)
 	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERTWO_PWM_PIN_3 == PwmPin) {
+        ReturnValue = E_OK;
 		/* deactivate compare output mode in timer control register */
 		writeBit(TCCR2A, COM2B1, 0);
-		ReturnValue = E_OK;
 	}
 	/*
 	if(TIMERTWO_PWM_PIN_11 == PwmPin) {
@@ -234,7 +231,7 @@ stdReturnType TimerTwo::disablePwm(TimerTwoPwmPinType PwmPin)
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::setPwmDuty(TimerTwoPwmPinType PwmPin, unsigned int DutyCycle)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long DutyCycleTrans;
 
 	if(TIMERTWO_STATE_READY == State || TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State) {
@@ -244,14 +241,11 @@ stdReturnType TimerTwo::setPwmDuty(TimerTwoPwmPinType PwmPin, unsigned int DutyC
 			DutyCycleTrans = OCR2A * DutyCycle;
 			DutyCycleTrans >>= TIMERTWO_NUMBER_OF_BITS;
 			/* set output compare register value for given pwm pin */
-			if(TIMERTWO_PWM_PIN_3 == PwmPin) OCR2B = DutyCycleTrans;
-			else ReturnValue = E_NOT_OK;
-		} else {
-			ReturnValue = E_NOT_OK;
+			if(TIMERTWO_PWM_PIN_3 == PwmPin) {
+                ReturnValue = E_OK;
+                OCR2B = DutyCycleTrans;
+            }
 		}
-	} else {
-		ReturnValue = E_NOT_OK;
-	}
 	return ReturnValue;
 } /* setPwmDuty */
 
@@ -379,12 +373,13 @@ void TimerTwo::detachInterrupt()
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::read(unsigned int* Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	byte TCNT2_tmp;
 	int CounterValue;
 	byte PrescaleShiftScale = 0;
 
-	if(TIMERTWO_STATE_RUNNING == State) {
+	if(TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State) {
+        ReturnValue = E_OK;
 		/* save current timer value */
 		CounterValue = TCNT2;
 		switch (ClockSelectBitGroup)
@@ -419,8 +414,6 @@ stdReturnType TimerTwo::read(unsigned int* Microseconds)
 		if(TCNT2_tmp < CounterValue) CounterValue = (int) (OCR2A - CounterValue) + (int) OCR2A;
 		/* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* read */

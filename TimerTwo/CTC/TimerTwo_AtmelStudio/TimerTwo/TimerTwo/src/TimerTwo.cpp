@@ -86,9 +86,10 @@ TimerTwo& TimerTwo::instance()
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCompareCallback)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERTWO_STATE_NONE == State) {
+        ReturnValue = E_OK;
 		State = TIMERTWO_STATE_INIT;
 		/* clear control register */
 	    TCCR2A = 0;
@@ -103,8 +104,6 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
 		if(sTimerCompareCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerCompareCallback)) ReturnValue = E_NOT_OK;
 
 		State = TIMERTWO_STATE_READY;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 		return ReturnValue;
 } /* init */
@@ -122,11 +121,12 @@ stdReturnType TimerTwo::init(long Microseconds, TimerIsrCallbackF_void sTimerCom
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::setPeriod(unsigned long Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long TimerCycles;
 
     /* was request out of bounds? */
     if(Microseconds <= ((TIMERTWO_RESOLUTION / (F_CPU / 1000000)) * TIMERTWO_MAX_PRESCALER)) {
+        ReturnValue = E_OK;
         /* calculate timer cycles to reach timer period */
         TimerCycles = (F_CPU / 1000000) * Microseconds;
         /* calculate timer prescaler */
@@ -275,11 +275,12 @@ void TimerTwo::detachInterrupt()
  *****************************************************************************************************************************************************/
 stdReturnType TimerTwo::read(unsigned int* Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	int CounterValue;
 	byte PrescaleShiftScale = 0;
 
 	if(TIMERTWO_STATE_RUNNING == State || TIMERTWO_STATE_STOPPED == State) {
+        ReturnValue = E_OK;
 		/* save current timer value */
 		CounterValue = TCNT2;
 		switch (ClockSelectBitGroup)

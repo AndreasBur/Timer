@@ -86,9 +86,10 @@ TimerOne& TimerOne::instance()
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOverflowCallback)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERONE_STATE_NONE == State) {
+        ReturnValue = E_OK;
 		State = TIMERONE_STATE_INIT;
 		/* clear control register */
 	    TCCR1A = 0;
@@ -100,14 +101,12 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
 	    writeBit(TCCR1B, WGM12, 0);
 		writeBit(TCCR1B, WGM13, 1);
 		
-		if(E_NOT_OK == setPeriod(Microseconds)) ReturnValue = E_NOT_OK;
-		if(sTimerOverflowCallback != NULL) if(E_NOT_OK == attachInterrupt(sTimerOverflowCallback)) ReturnValue = E_NOT_OK;
+		if(setPeriod(Microseconds) == E_NOT_OK) ReturnValue = E_NOT_OK;
+		if(sTimerOverflowCallback != NULL) if(attachInterrupt(sTimerOverflowCallback) == E_NOT_OK) ReturnValue = E_NOT_OK;
 
 		State = TIMERONE_STATE_READY;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
-		return ReturnValue;
+    return ReturnValue;
 } /* init */
 
 
@@ -123,11 +122,12 @@ stdReturnType TimerOne::init(long Microseconds, TimerIsrCallbackF_void sTimerOve
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long TimerCycles;
     
     /* was request out of bounds? */
     if(Microseconds <= ((TIMERONE_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER * 2)) {
+        ReturnValue = E_OK;
         /* calculate timer cycles to reach timer period, counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
         TimerCycles = (F_CPU / 2000000) * Microseconds;
         /* calculate timer prescaler */
@@ -150,8 +150,6 @@ stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
             /* reset clock select register, and starts the clock */
             writeBitGroup(TCCR1B, TIMERONE_REG_CS_GM, TIMERONE_REG_CS_GP, ClockSelectBitGroup);						
         }
-    } else {
-        ReturnValue = E_NOT_OK;
     }
 	return ReturnValue;
 } /* setPeriod */
@@ -171,10 +169,11 @@ stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::enablePwm(TimerOnePwmPinType PwmPin, unsigned int DutyCycle) 
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 
 	if(TIMERONE_STATE_READY == State || TIMERONE_STATE_RUNNING == State || TIMERONE_STATE_STOPPED == State)
 	{
+        ReturnValue = E_OK;
 		if(TIMERONE_PWM_PIN_9 == PwmPin) {
 			pinMode(TIMERONE_PWM_PIN_9, OUTPUT);
 			/* activate compare output mode in timer control register */
@@ -186,9 +185,7 @@ stdReturnType TimerOne::enablePwm(TimerOnePwmPinType PwmPin, unsigned int DutyCy
 		} else {
 			ReturnValue = E_NOT_OK;
 		}
-		if(E_NOT_OK == setPwmDuty(PwmPin, DutyCycle)) ReturnValue = E_NOT_OK;
-	} else {
-		ReturnValue = E_NOT_OK;
+		if(setPwmDuty(PwmPin, DutyCycle) == E_NOT_OK) ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* enablePwm */
@@ -236,7 +233,7 @@ stdReturnType TimerOne::disablePwm(TimerOnePwmPinType PwmPin)
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::setPwmDuty(TimerOnePwmPinType PwmPin, unsigned int DutyCycle)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long DutyCycleTrans;
 
 	if(TIMERONE_STATE_READY == State || TIMERONE_STATE_RUNNING == State || TIMERONE_STATE_STOPPED == State) {
@@ -247,15 +244,15 @@ stdReturnType TimerOne::setPwmDuty(TimerOnePwmPinType PwmPin, unsigned int DutyC
 				DutyCycleTrans = (unsigned long) ICR1 * DutyCycle;
 				DutyCycleTrans >>= TIMERONE_NUMBER_OF_BITS;
 				/* set output compare register value for given pwm pin */
-				if(TIMERONE_PWM_PIN_9 == PwmPin) OCR1A = DutyCycleTrans;
-				else if(TIMERONE_PWM_PIN_10 == PwmPin) OCR1B = DutyCycleTrans;
-				else ReturnValue = E_NOT_OK;
+				if(TIMERONE_PWM_PIN_9 == PwmPin) {
+                    ReturnValue = E_OK;
+                    OCR1A = DutyCycleTrans;
+				} else if(TIMERONE_PWM_PIN_10 == PwmPin) {
+                    ReturnValue = E_OK;
+                    OCR1B = DutyCycleTrans;
+				}
 			}
-		} else {
-			ReturnValue = E_NOT_OK;
 		}
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* setPwmDuty */
@@ -384,12 +381,13 @@ void TimerOne::detachInterrupt()
  *****************************************************************************************************************************************************/
 stdReturnType TimerOne::read(unsigned long* Microseconds)
 {
-	stdReturnType ReturnValue = E_OK;
+	stdReturnType ReturnValue = E_NOT_OK;
 	unsigned long TCNT1_tmp;
 	unsigned int CounterValue;
 	char PrescaleShiftScale = 0;
 
 	if(TIMERONE_STATE_RUNNING == State) {
+        ReturnValue = E_OK;
 		/* save current timer value */
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = TCNT1; }
 		switch (ClockSelectBitGroup)
@@ -418,8 +416,6 @@ stdReturnType TimerOne::read(unsigned long* Microseconds)
 		if(TCNT1_tmp < CounterValue) { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = (int) (ICR1 - CounterValue) + (int) ICR1; }}
 		/* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* read */
