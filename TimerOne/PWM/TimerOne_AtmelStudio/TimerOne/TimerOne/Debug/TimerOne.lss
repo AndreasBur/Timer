@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 000007c4  00000000  00000000  00001e1f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000bc4  00000000  00000000  000025e3  2**0
+  8 .debug_line   00000bd6  00000000  00000000  000025e3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002fc  00000000  00000000  000031a8  2**2
+  9 .debug_frame  000002fc  00000000  00000000  000031bc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000008f7  00000000  00000000  000034a4  2**0
+ 10 .debug_str    000008fe  00000000  00000000  000034b8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000f00  00000000  00000000  00003d9b  2**0
+ 11 .debug_loc    00000f60  00000000  00000000  00003db6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000130  00000000  00000000  00004c9b  2**0
+ 12 .debug_ranges 00000130  00000000  00000000  00004d16  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -143,24 +143,24 @@ void loop() {
   d0:	08 95       	ret
 
 000000d2 <__tcf_0>:
+		if(TCNT1_tmp < CounterValue) { ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { CounterValue = (int) (ICR1 - CounterValue) + (int) ICR1; }}
+		/* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* read */
   d2:	08 95       	ret
 
-000000d4 <_ZN8TimerOne8instanceEv>:
-  d4:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <_ZGVZN8TimerOne8instanceEvE17SingletonInstance>
+000000d4 <_ZN8TimerOne11getInstanceEv>:
+  d4:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <_ZGVZN8TimerOne11getInstanceEvE17SingletonInstance>
   d8:	81 11       	cpse	r24, r1
-  da:	0f c0       	rjmp	.+30     	; 0xfa <_ZN8TimerOne8instanceEv+0x26>
+  da:	0f c0       	rjmp	.+30     	; 0xfa <_ZN8TimerOne11getInstanceEv+0x26>
   dc:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
   e0:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <_edata+0x5>
   e4:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <_edata+0x4>
   e8:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <_edata+0x1>
   ec:	81 e0       	ldi	r24, 0x01	; 1
-  ee:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <_ZGVZN8TimerOne8instanceEvE17SingletonInstance>
+  ee:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <_ZGVZN8TimerOne11getInstanceEvE17SingletonInstance>
   f2:	89 e6       	ldi	r24, 0x69	; 105
   f4:	90 e0       	ldi	r25, 0x00	; 0
   f6:	0e 94 a1 01 	call	0x342	; 0x342 <atexit>
@@ -446,8 +446,8 @@ ISR(TIMER1_OVF_vect)
 /******************************************************************************************************************************************************
  * GLOBAL DATA
  *****************************************************************************************************************************************************/
-TimerOne& Timer1 = TimerOne::instance();              // pre-instantiate TimerOne
- 334:	0e 94 6a 00 	call	0xd4	; 0xd4 <_ZN8TimerOne8instanceEv>
+TimerOne& Timer1 = TimerOne::getInstance();              // pre-instantiate TimerOne
+ 334:	0e 94 6a 00 	call	0xd4	; 0xd4 <_ZN8TimerOne11getInstanceEv>
  338:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <Timer1+0x1>
  33c:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <Timer1>
  340:	08 95       	ret

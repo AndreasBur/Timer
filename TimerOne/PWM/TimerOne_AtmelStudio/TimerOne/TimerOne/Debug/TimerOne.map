@@ -420,9 +420,9 @@ END GROUP
  .text.loop     0x000000d0        0x2 Sketch.o
                 0x000000d0                loop
  .text.__tcf_0  0x000000d2        0x2 src/TimerOne.o
- .text._ZN8TimerOne8instanceEv
+ .text._ZN8TimerOne11getInstanceEv
                 0x000000d4       0x2c src/TimerOne.o
-                0x000000d4                _ZN8TimerOne8instanceEv
+                0x000000d4                _ZN8TimerOne11getInstanceEv
  .text._ZN8TimerOne9setPeriodEm
                 0x00000100       0xde src/TimerOne.o
                 0x00000100                _ZN8TimerOne9setPeriodEm
@@ -497,9 +497,9 @@ END GROUP
                 0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss._ZZN8TimerOne8instanceEvE17SingletonInstance
+ .bss._ZZN8TimerOne11getInstanceEvE17SingletonInstance
                 0x00800100        0x6 src/TimerOne.o
- .bss._ZGVZN8TimerOne8instanceEvE17SingletonInstance
+ .bss._ZGVZN8TimerOne11getInstanceEvE17SingletonInstance
                 0x00800106        0x8 src/TimerOne.o
  .bss.Timer1    0x0080010e        0x2 src/TimerOne.o
                 0x0080010e                Timer1
@@ -616,12 +616,12 @@ END GROUP
  .debug_abbrev  0x000005a8       0xd7 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
  .debug_abbrev  0x0000067f      0x145 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
-.debug_line     0x00000000      0xbc4
+.debug_line     0x00000000      0xbd6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x12e Sketch.o
- .debug_line    0x0000012e      0x6ae src/TimerOne.o
- .debug_line    0x000007dc      0x159 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_line    0x00000935      0x28f C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_line    0x0000012e      0x6c0 src/TimerOne.o
+ .debug_line    0x000007ee      0x159 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_line    0x00000947      0x28f C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_frame    0x00000000      0x2fc
  *(.debug_frame)
@@ -630,23 +630,23 @@ END GROUP
  .debug_frame   0x000001fc       0x44 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
  .debug_frame   0x00000240       0xbc C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
-.debug_str      0x00000000      0x8f7
+.debug_str      0x00000000      0x8fe
  *(.debug_str)
- .debug_str     0x00000000      0x580 Sketch.o
-                                0x63f (size before relaxing)
- .debug_str     0x00000580      0x176 src/TimerOne.o
-                                0x7a7 (size before relaxing)
- .debug_str     0x000006f6       0xb2 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_str     0x00000000      0x587 Sketch.o
+                                0x646 (size before relaxing)
+ .debug_str     0x00000587      0x176 src/TimerOne.o
+                                0x7ae (size before relaxing)
+ .debug_str     0x000006fd       0xb2 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
                                 0x260 (size before relaxing)
- .debug_str     0x000007a8      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_str     0x000007af      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                                 0x243 (size before relaxing)
 
-.debug_loc      0x00000000      0xf00
+.debug_loc      0x00000000      0xf60
  *(.debug_loc)
  .debug_loc     0x00000000       0x2f Sketch.o
- .debug_loc     0x0000002f      0xc62 src/TimerOne.o
- .debug_loc     0x00000c91       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_loc     0x00000cb7      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_loc     0x0000002f      0xcc2 src/TimerOne.o
+ .debug_loc     0x00000cf1       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_loc     0x00000d17      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\PWM\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_macinfo
  *(.debug_macinfo)

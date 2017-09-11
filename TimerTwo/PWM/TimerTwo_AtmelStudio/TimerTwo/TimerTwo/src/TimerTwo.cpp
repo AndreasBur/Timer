@@ -26,7 +26,7 @@
 /******************************************************************************************************************************************************
  * GLOBAL DATA
  *****************************************************************************************************************************************************/
-TimerTwo& Timer2 = TimerTwo::instance();              // pre-instantiate TimerTwo
+TimerTwo& Timer2 = TimerTwo::getInstance();              // pre-instantiate TimerTwo
 
 
 /******************************************************************************************************************************************************
@@ -61,7 +61,7 @@ TimerTwo::~TimerTwo()
 /******************************************************************************************************************************************************
   COPY CONSTRUCTOR OF TimerTwo
 ******************************************************************************************************************************************************/
-TimerTwo& TimerTwo::instance()
+TimerTwo& TimerTwo::getInstance()
 {
 	static TimerTwo SingletonInstance;
 	return SingletonInstance;
@@ -246,6 +246,7 @@ stdReturnType TimerTwo::setPwmDuty(TimerTwoPwmPinType PwmPin, unsigned int DutyC
                 OCR2B = DutyCycleTrans;
             }
 		}
+    }
 	return ReturnValue;
 } /* setPwmDuty */
 

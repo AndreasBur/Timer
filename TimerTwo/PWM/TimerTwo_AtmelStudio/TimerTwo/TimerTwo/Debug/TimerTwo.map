@@ -460,9 +460,9 @@ END GROUP
  .text.loop     0x000000e6        0x2 Sketch.o
                 0x000000e6                loop
  .text.__tcf_0  0x000000e8        0x2 src/TimerTwo.o
- .text._ZN8TimerTwo8instanceEv
+ .text._ZN8TimerTwo11getInstanceEv
                 0x000000ea       0x2c src/TimerTwo.o
-                0x000000ea                _ZN8TimerTwo8instanceEv
+                0x000000ea                _ZN8TimerTwo11getInstanceEv
  .text._ZN8TimerTwo9setPeriodEm
                 0x00000116      0x100 src/TimerTwo.o
                 0x00000116                _ZN8TimerTwo9setPeriodEm
@@ -537,9 +537,9 @@ END GROUP
                 0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss._ZZN8TimerTwo8instanceEvE17SingletonInstance
+ .bss._ZZN8TimerTwo11getInstanceEvE17SingletonInstance
                 0x00800100        0x6 src/TimerTwo.o
- .bss._ZGVZN8TimerTwo8instanceEvE17SingletonInstance
+ .bss._ZGVZN8TimerTwo11getInstanceEvE17SingletonInstance
                 0x00800106        0x8 src/TimerTwo.o
  .bss.Timer2    0x0080010e        0x2 src/TimerTwo.o
                 0x0080010e                Timer2
@@ -642,12 +642,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x14e1
+.debug_info     0x00000000     0x14e5
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4d8 Sketch.o
- .debug_info    0x000004d8      0xb5c src/TimerTwo.o
- .debug_info    0x00001034      0x1f0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_info    0x00001224      0x2bd C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_info    0x000004d8      0xb60 src/TimerTwo.o
+ .debug_info    0x00001038      0x1f0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_info    0x00001228      0x2bd C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_abbrev   0x00000000      0x76c
  *(.debug_abbrev)
@@ -670,23 +670,23 @@ END GROUP
  .debug_frame   0x000001fc       0x44 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
  .debug_frame   0x00000240       0xbc C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
-.debug_str      0x00000000      0x8e2
+.debug_str      0x00000000      0x8e9
  *(.debug_str)
- .debug_str     0x00000000      0x5a5 Sketch.o
-                                0x664 (size before relaxing)
- .debug_str     0x000005a5      0x151 src/TimerTwo.o
-                                0x7a7 (size before relaxing)
- .debug_str     0x000006f6       0x9d C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_str     0x00000000      0x5ac Sketch.o
+                                0x66b (size before relaxing)
+ .debug_str     0x000005ac      0x151 src/TimerTwo.o
+                                0x7ae (size before relaxing)
+ .debug_str     0x000006fd       0x9d C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
                                 0x24b (size before relaxing)
- .debug_str     0x00000793      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_str     0x0000079a      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                                 0x22e (size before relaxing)
 
-.debug_loc      0x00000000      0xb4e
+.debug_loc      0x00000000      0xb8e
  *(.debug_loc)
  .debug_loc     0x00000000       0x2f Sketch.o
- .debug_loc     0x0000002f      0x8b0 src/TimerTwo.o
- .debug_loc     0x000008df       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_loc     0x00000905      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_loc     0x0000002f      0x8f0 src/TimerTwo.o
+ .debug_loc     0x0000091f       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_loc     0x00000945      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\PWM\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_macinfo
  *(.debug_macinfo)

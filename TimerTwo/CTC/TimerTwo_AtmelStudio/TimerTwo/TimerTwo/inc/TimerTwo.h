@@ -86,7 +86,7 @@ class TimerTwo
 	TimerTwoClockSelectType ClockSelectBitGroup;
 
   public:
-	static TimerTwo& instance();
+	static TimerTwo& getInstance();
 	TimerIsrCallbackF_void TimerOverflowCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
 	stdReturnType setPeriod(unsigned long);

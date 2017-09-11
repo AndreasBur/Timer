@@ -97,7 +97,7 @@ class TimerOne
 	unsigned int PwmPeriod;
 
   public:
-	static TimerOne& instance();
+	static TimerOne& getInstance();
 	TimerIsrCallbackF_void TimerOverflowCallback;
 	stdReturnType init(long = 1000, TimerIsrCallbackF_void = NULL);
 	stdReturnType setPeriod(unsigned long);

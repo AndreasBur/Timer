@@ -402,9 +402,9 @@ END GROUP
  .text.loop     0x000000e6        0x2 Sketch.o
                 0x000000e6                loop
  .text.__tcf_0  0x000000e8        0x2 src/TimerOne.o
- .text._ZN8TimerOne8instanceEv
+ .text._ZN8TimerOne11getInstanceEv
                 0x000000ea       0x2c src/TimerOne.o
-                0x000000ea                _ZN8TimerOne8instanceEv
+                0x000000ea                _ZN8TimerOne11getInstanceEv
  .text._ZN8TimerOne9setPeriodEm
                 0x00000116       0xde src/TimerOne.o
                 0x00000116                _ZN8TimerOne9setPeriodEm
@@ -479,9 +479,9 @@ END GROUP
                 0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss._ZZN8TimerOne8instanceEvE17SingletonInstance
+ .bss._ZZN8TimerOne11getInstanceEvE17SingletonInstance
                 0x00800100        0x6 src/TimerOne.o
- .bss._ZGVZN8TimerOne8instanceEvE17SingletonInstance
+ .bss._ZGVZN8TimerOne11getInstanceEvE17SingletonInstance
                 0x00800106        0x8 src/TimerOne.o
  .bss.Timer1    0x0080010e        0x2 src/TimerOne.o
                 0x0080010e                Timer1
@@ -612,23 +612,23 @@ END GROUP
  .debug_frame   0x000001ac       0x44 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
  .debug_frame   0x000001f0       0xbc C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
-.debug_str      0x00000000      0x7de
+.debug_str      0x00000000      0x7e5
  *(.debug_str)
- .debug_str     0x00000000      0x4af Sketch.o
-                                0x545 (size before relaxing)
- .debug_str     0x000004af      0x143 src/TimerOne.o
-                                0x67a (size before relaxing)
- .debug_str     0x000005f2       0x9d C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_str     0x00000000      0x4b6 Sketch.o
+                                0x54c (size before relaxing)
+ .debug_str     0x000004b6      0x143 src/TimerOne.o
+                                0x681 (size before relaxing)
+ .debug_str     0x000005f9       0x9d C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
                                 0x24b (size before relaxing)
- .debug_str     0x0000068f      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_str     0x00000696      0x14f C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
                                 0x22e (size before relaxing)
 
-.debug_loc      0x00000000      0x992
+.debug_loc      0x00000000      0x9b6
  *(.debug_loc)
  .debug_loc     0x00000000       0x2f Sketch.o
- .debug_loc     0x0000002f      0x6f4 src/TimerOne.o
- .debug_loc     0x00000723       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_loc     0x00000749      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_loc     0x0000002f      0x718 src/TimerOne.o
+ .debug_loc     0x00000747       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .debug_loc     0x0000076d      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerOne\CTC\TimerOne_AtmelStudio\TimerOne\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
 
 .debug_macinfo
  *(.debug_macinfo)

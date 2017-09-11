@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000002ac  00000000  00000000  00002a70  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000007de  00000000  00000000  00002d1c  2**0
+ 10 .debug_str    000007e5  00000000  00000000  00002d1c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000992  00000000  00000000  000034fa  2**0
+ 11 .debug_loc    000009b6  00000000  00000000  00003501  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000100  00000000  00000000  00003e8c  2**0
+ 12 .debug_ranges 00000100  00000000  00000000  00003eb7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -156,24 +156,24 @@ void loop() {
   e6:	08 95       	ret
 
 000000e8 <__tcf_0>:
+		}
+		/* transform counter value to microseconds in an efficient way */
 		*Microseconds = ((CounterValue * 1000UL) / (F_CPU / 1000UL)) << PrescaleShiftScale;
-	} else {
-		ReturnValue = E_NOT_OK;
 	}
 	return ReturnValue;
 } /* read */
   e8:	08 95       	ret
 
-000000ea <_ZN8TimerOne8instanceEv>:
-  ea:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <_ZGVZN8TimerOne8instanceEvE17SingletonInstance>
+000000ea <_ZN8TimerOne11getInstanceEv>:
+  ea:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <_ZGVZN8TimerOne11getInstanceEvE17SingletonInstance>
   ee:	81 11       	cpse	r24, r1
-  f0:	0f c0       	rjmp	.+30     	; 0x110 <_ZN8TimerOne8instanceEv+0x26>
+  f0:	0f c0       	rjmp	.+30     	; 0x110 <_ZN8TimerOne11getInstanceEv+0x26>
   f2:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__data_end>
   f6:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <__data_end+0x5>
   fa:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <__data_end+0x4>
   fe:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__data_end+0x1>
  102:	81 e0       	ldi	r24, 0x01	; 1
- 104:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <_ZGVZN8TimerOne8instanceEvE17SingletonInstance>
+ 104:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <_ZGVZN8TimerOne11getInstanceEvE17SingletonInstance>
  108:	84 e7       	ldi	r24, 0x74	; 116
  10a:	90 e0       	ldi	r25, 0x00	; 0
  10c:	0e 94 a3 01 	call	0x346	; 0x346 <atexit>
@@ -452,8 +452,8 @@ ISR(TIMER1_COMPA_vect)
 /******************************************************************************************************************************************************
  * GLOBAL DATA
  *****************************************************************************************************************************************************/
-TimerOne& Timer1 = TimerOne::instance();              // pre-instantiate TimerOne
- 338:	0e 94 75 00 	call	0xea	; 0xea <_ZN8TimerOne8instanceEv>
+TimerOne& Timer1 = TimerOne::getInstance();              // pre-instantiate TimerOne
+ 338:	0e 94 75 00 	call	0xea	; 0xea <_ZN8TimerOne11getInstanceEv>
  33c:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <Timer1+0x1>
  340:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <Timer1>
  344:	08 95       	ret
