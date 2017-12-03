@@ -15,6 +15,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000140  00000000  00000000  00000580  2**0
                   CONTENTS, READONLY, DEBUGGING
+<<<<<<< Updated upstream
   6 .debug_info   000014e5  00000000  00000000  000006c0  2**0
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 0000076c  00000000  00000000  00001ba5  2**0
@@ -28,6 +29,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
  11 .debug_loc    00000b8e  00000000  00000000  000038d1  2**0
                   CONTENTS, READONLY, DEBUGGING
  12 .debug_ranges 00000130  00000000  00000000  0000445f  2**0
+=======
+  6 .debug_info   000014cb  00000000  00000000  000006c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000076f  00000000  00000000  00001b8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000009d9  00000000  00000000  000022fa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000002fc  00000000  00000000  00002cd4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000931  00000000  00000000  00002fd0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000bcd  00000000  00000000  00003901  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000100  00000000  00000000  000044ce  2**0
+>>>>>>> Stashed changes
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -473,26 +489,66 @@ TimerTwo& Timer2 = TimerTwo::getInstance();              // pre-instantiate Time
  35a:	08 95       	ret
 
 0000035c <atexit>:
+*/
+
+#include <Arduino.h>
+
+//Declared weak in Arduino.h to allow user redefinitions.
+int atexit(void (*func)()) { return 0; }
  35c:	80 e0       	ldi	r24, 0x00	; 0
  35e:	90 e0       	ldi	r25, 0x00	; 0
  360:	08 95       	ret
 
 00000362 <initVariant>:
+
+// Weak empty variant initialization function.
+// May be redefined by variant files.
+void initVariant() __attribute__((weak));
+void initVariant() { }
  362:	08 95       	ret
 
 00000364 <main>:
+
+int main(void)
+{
+	init();
  364:	0e 94 0b 02 	call	0x416	; 0x416 <init>
+
+	initVariant();
  368:	0e 94 b1 01 	call	0x362	; 0x362 <initVariant>
+
+#if defined(USBCON)
+	USBDevice.attach();
+#endif
+	
+	setup();
  36c:	0e 94 5f 00 	call	0xbe	; 0xbe <setup>
+    
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
  370:	c0 e0       	ldi	r28, 0x00	; 0
  372:	d0 e0       	ldi	r29, 0x00	; 0
+#endif
+	
+	setup();
+    
+	for (;;) {
+		loop();
  374:	0e 94 73 00 	call	0xe6	; 0xe6 <loop>
+		if (serialEventRun) serialEventRun();
  378:	20 97       	sbiw	r28, 0x00	; 0
  37a:	e1 f3       	breq	.-8      	; 0x374 <main+0x10>
  37c:	0e 94 00 00 	call	0	; 0x0 <__vectors>
  380:	f9 cf       	rjmp	.-14     	; 0x374 <main+0x10>
 
 00000382 <__vector_16>:
+	// we can't subtract any more than this or we'd overflow w/ small delays.
+	us--;
+#endif
+
+	// busy wait
+	__asm__ __volatile__ (
  382:	1f 92       	push	r1
  384:	0f 92       	push	r0
  386:	0f b6       	in	r0, 0x3f	; 63
@@ -551,62 +607,134 @@ TimerTwo& Timer2 = TimerTwo::getInstance();              // pre-instantiate Time
  414:	18 95       	reti
 
 00000416 <init>:
+
+void init()
+{
+	// this needs to be called before setup() or some functions won't
+	// work there
+	sei();
  416:	78 94       	sei
+	
+	// on the ATmega168, timer 0 is also used for fast hardware pwm
+	// (using phase-correct PWM would mean that timer 0 overflowed half as often
+	// resulting in different millis() behavior on the ATmega8 and ATmega168)
+#if defined(TCCR0A) && defined(WGM01)
+	sbi(TCCR0A, WGM01);
  418:	84 b5       	in	r24, 0x24	; 36
  41a:	82 60       	ori	r24, 0x02	; 2
  41c:	84 bd       	out	0x24, r24	; 36
+	sbi(TCCR0A, WGM00);
  41e:	84 b5       	in	r24, 0x24	; 36
  420:	81 60       	ori	r24, 0x01	; 1
  422:	84 bd       	out	0x24, r24	; 36
+	// this combination is for the standard atmega8
+	sbi(TCCR0, CS01);
+	sbi(TCCR0, CS00);
+#elif defined(TCCR0B) && defined(CS01) && defined(CS00)
+	// this combination is for the standard 168/328/1280/2560
+	sbi(TCCR0B, CS01);
  424:	85 b5       	in	r24, 0x25	; 37
  426:	82 60       	ori	r24, 0x02	; 2
  428:	85 bd       	out	0x25, r24	; 37
+	sbi(TCCR0B, CS00);
  42a:	85 b5       	in	r24, 0x25	; 37
  42c:	81 60       	ori	r24, 0x01	; 1
  42e:	85 bd       	out	0x25, r24	; 37
+
+	// enable timer 0 overflow interrupt
+#if defined(TIMSK) && defined(TOIE0)
+	sbi(TIMSK, TOIE0);
+#elif defined(TIMSK0) && defined(TOIE0)
+	sbi(TIMSK0, TOIE0);
  430:	ee e6       	ldi	r30, 0x6E	; 110
  432:	f0 e0       	ldi	r31, 0x00	; 0
  434:	80 81       	ld	r24, Z
  436:	81 60       	ori	r24, 0x01	; 1
  438:	80 83       	st	Z, r24
+	// this is better for motors as it ensures an even waveform
+	// note, however, that fast pwm mode can achieve a frequency of up
+	// 8 MHz (with a 16 MHz clock) at 50% duty cycle
+
+#if defined(TCCR1B) && defined(CS11) && defined(CS10)
+	TCCR1B = 0;
  43a:	e1 e8       	ldi	r30, 0x81	; 129
  43c:	f0 e0       	ldi	r31, 0x00	; 0
  43e:	10 82       	st	Z, r1
+
+	// set timer 1 prescale factor to 64
+	sbi(TCCR1B, CS11);
  440:	80 81       	ld	r24, Z
  442:	82 60       	ori	r24, 0x02	; 2
  444:	80 83       	st	Z, r24
+#if F_CPU >= 8000000L
+	sbi(TCCR1B, CS10);
  446:	80 81       	ld	r24, Z
  448:	81 60       	ori	r24, 0x01	; 1
  44a:	80 83       	st	Z, r24
+	sbi(TCCR1, CS10);
+#endif
+#endif
+	// put timer 1 in 8-bit phase correct pwm mode
+#if defined(TCCR1A) && defined(WGM10)
+	sbi(TCCR1A, WGM10);
  44c:	e0 e8       	ldi	r30, 0x80	; 128
  44e:	f0 e0       	ldi	r31, 0x00	; 0
  450:	80 81       	ld	r24, Z
  452:	81 60       	ori	r24, 0x01	; 1
  454:	80 83       	st	Z, r24
+
+	// set timer 2 prescale factor to 64
+#if defined(TCCR2) && defined(CS22)
+	sbi(TCCR2, CS22);
+#elif defined(TCCR2B) && defined(CS22)
+	sbi(TCCR2B, CS22);
  456:	e1 eb       	ldi	r30, 0xB1	; 177
  458:	f0 e0       	ldi	r31, 0x00	; 0
  45a:	80 81       	ld	r24, Z
  45c:	84 60       	ori	r24, 0x04	; 4
  45e:	80 83       	st	Z, r24
+
+	// configure timer 2 for phase correct pwm (8-bit)
+#if defined(TCCR2) && defined(WGM20)
+	sbi(TCCR2, WGM20);
+#elif defined(TCCR2A) && defined(WGM20)
+	sbi(TCCR2A, WGM20);
  460:	e0 eb       	ldi	r30, 0xB0	; 176
  462:	f0 e0       	ldi	r31, 0x00	; 0
  464:	80 81       	ld	r24, Z
  466:	81 60       	ori	r24, 0x01	; 1
  468:	80 83       	st	Z, r24
+#if defined(ADCSRA)
+	// set a2d prescale factor to 128
+	// 16 MHz / 128 = 125 KHz, inside the desired 50-200 KHz range.
+	// XXX: this will not work properly for other clock speeds, and
+	// this code should use F_CPU to determine the prescale factor.
+	sbi(ADCSRA, ADPS2);
  46a:	ea e7       	ldi	r30, 0x7A	; 122
  46c:	f0 e0       	ldi	r31, 0x00	; 0
  46e:	80 81       	ld	r24, Z
  470:	84 60       	ori	r24, 0x04	; 4
  472:	80 83       	st	Z, r24
+	sbi(ADCSRA, ADPS1);
  474:	80 81       	ld	r24, Z
  476:	82 60       	ori	r24, 0x02	; 2
  478:	80 83       	st	Z, r24
+	sbi(ADCSRA, ADPS0);
  47a:	80 81       	ld	r24, Z
  47c:	81 60       	ori	r24, 0x01	; 1
  47e:	80 83       	st	Z, r24
+
+	// enable a2d conversions
+	sbi(ADCSRA, ADEN);
  480:	80 81       	ld	r24, Z
  482:	80 68       	ori	r24, 0x80	; 128
  484:	80 83       	st	Z, r24
+	// here so they can be used as normal digital i/o; they will be
+	// reconnected in Serial.begin()
+#if defined(UCSRB)
+	UCSRB = 0;
+#elif defined(UCSR0B)
+	UCSR0B = 0;
  486:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
  48a:	08 95       	ret
 

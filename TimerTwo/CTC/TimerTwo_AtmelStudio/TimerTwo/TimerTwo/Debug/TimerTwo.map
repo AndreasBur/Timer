@@ -1,25 +1,25 @@
 Archive member included to satisfy reference by file (symbol)
 
-C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
                               src/TimerTwo.o (atexit)
-C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
-                              C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o) (init)
-C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
-                              C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o) (yield)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                              C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o) (init)
+C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+                              C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o) (yield)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
                               src/TimerTwo.o (__udivmodsi4)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328p/avr5/crtatmega328p.o (exit)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               src/TimerTwo.o (__do_copy_data)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
                               src/TimerTwo.o (__do_clear_bss)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
                               src/TimerTwo.o (__do_global_ctors)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
                               src/TimerTwo.o (__umulhisi3)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
-                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o) (__tablejump2__)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o) (__tablejump2__)
 
 Discarded input sections
 
@@ -51,24 +51,25 @@ Discarded input sections
                 0x00000000       0x6e src/TimerTwo.o
  .rodata.CSWTCH.25
                 0x00000000        0x7 src/TimerTwo.o
- .text          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .data          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .bss           0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .text          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
- .data          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
- .bss           0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
- .text.millis   0x00000000       0x18 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
- .text.micros   0x00000000       0x4a C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
- .text.delay    0x00000000       0x50 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .text          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .data          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .bss           0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .text          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .data          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .bss           0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .text.millis   0x00000000       0x18 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .text.micros   0x00000000       0x4a C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .text.delay    0x00000000       0x50 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
  .text.delayMicroseconds
-                0x00000000       0x14 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
- .text          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
- .data          0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
- .bss           0x00000000        0x0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
- .text.__empty  0x00000000        0x2 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
- .debug_info    0x00000000       0x3e C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
- .debug_abbrev  0x00000000       0x2a C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
+                0x00000000       0x14 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+ .text          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .data          0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .bss           0x00000000        0x0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .text.__empty  0x00000000        0x2 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .debug_info    0x00000000       0x3e C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .debug_abbrev  0x00000000       0x2a C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
  .debug_aranges
+<<<<<<< Updated upstream
                 0x00000000       0x20 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
  .debug_ranges  0x00000000       0x10 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
  .debug_line    0x00000000       0x41 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(hooks.o)
@@ -78,114 +79,125 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+=======
+                0x00000000       0x20 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .debug_ranges  0x00000000       0x10 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .debug_line    0x00000000       0x41 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .debug_str     0x00000000      0x12c C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .comment       0x00000000       0x31 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .debug_frame   0x00000000       0x24 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(hooks.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+>>>>>>> Stashed changes
  .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.div
-                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.mul
-                0x00000000       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00000000       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
 
 Memory Configuration
 
@@ -206,15 +218,15 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/
 LOAD Sketch.o
 LOAD src/TimerTwo.o
 START GROUP
-LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
-LOAD C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
+LOAD C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a
 END GROUP
-LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a
-LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 START GROUP
-LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a
-LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
-LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libc.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega328p/avr5\libatmega328p.a
 END GROUP
                 0x00020000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
@@ -357,15 +369,15 @@ END GROUP
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000076       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_copy_data.o)
+ .init4         0x00000076       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                 0x00000076                __do_copy_data
- .init4         0x0000008c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_clear_bss.o)
+ .init4         0x0000008c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
                 0x0000008c                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
  *(.init6)
- .init6         0x0000009c       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_ctors.o)
+ .init6         0x0000009c       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
                 0x0000009c                __do_global_ctors
  *(.init6)
  *(.init7)
@@ -419,24 +431,24 @@ END GROUP
                 0x00000138                __vector_7
  .text.startup._GLOBAL__sub_I_Timer2
                 0x0000018c        0xe src/TimerTwo.o
- .text.atexit   0x0000019a        0x6 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+ .text.atexit   0x0000019a        0x6 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
                 0x0000019a                atexit
  .text.initVariant
-                0x000001a0        0x2 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+                0x000001a0        0x2 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
                 0x000001a0                initVariant
  .text.startup.main
-                0x000001a2       0x1e C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+                0x000001a2       0x1e C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
                 0x000001a2                main
  .text.__vector_16
-                0x000001c0       0x94 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+                0x000001c0       0x94 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
                 0x000001c0                __vector_16
- .text.init     0x00000254       0x76 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .text.init     0x00000254       0x76 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
                 0x00000254                init
- .text.libgcc   0x000002ca        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+ .text.libgcc   0x000002ca        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
                 0x000002ca                __tablejump2__
                 0x000002d6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002d6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+ .fini9         0x000002d6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                 0x000002d6                _exit
                 0x000002d6                exit
  *(.fini9)
@@ -457,7 +469,7 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002d6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x000002d6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
                 0x000002da                _etext = .
 
@@ -483,12 +495,12 @@ END GROUP
  .bss.Timer2    0x0080010c        0x2 src/TimerTwo.o
                 0x0080010c                Timer2
  .bss.timer0_fract
-                0x0080010e        0x1 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+                0x0080010e        0x1 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
  .bss.timer0_millis
-                0x0080010f        0x4 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+                0x0080010f        0x4 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
                 0x0080010f                timer0_millis
  .bss.timer0_overflow_count
-                0x00800113        0x4 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+                0x00800113        0x4 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
                 0x00800113                timer0_overflow_count
  *(COMMON)
                 0x00800117                PROVIDE (__bss_end, .)
@@ -544,8 +556,8 @@ END GROUP
  .comment       0x00000000       0x30 Sketch.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 src/TimerTwo.o
- .comment       0x00000030       0x31 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .comment       0x00000030       0x31 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .comment       0x00000030       0x31 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .comment       0x00000030       0x31 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
@@ -574,41 +586,42 @@ END GROUP
  .debug_aranges
                 0x00000028       0x88 src/TimerTwo.o
  .debug_aranges
-                0x000000b0       0x30 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
+                0x000000b0       0x30 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
  .debug_aranges
-                0x000000e0       0x48 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+                0x000000e0       0x48 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x114f
+.debug_info     0x00000000     0x1162
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x3fd Sketch.o
- .debug_info    0x000003fd      0x8a5 src/TimerTwo.o
- .debug_info    0x00000ca2      0x1f0 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_info    0x00000e92      0x2bd C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_info    0x00000000      0x415 Sketch.o
+ .debug_info    0x00000415      0x88c src/TimerTwo.o
+ .debug_info    0x00000ca1      0x201 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_info    0x00000ea2      0x2c0 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
-.debug_abbrev   0x00000000      0x722
+.debug_abbrev   0x00000000      0x724
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x187 Sketch.o
- .debug_abbrev  0x00000187      0x37f src/TimerTwo.o
- .debug_abbrev  0x00000506       0xd7 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_abbrev  0x000005dd      0x145 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_abbrev  0x00000000      0x18c Sketch.o
+ .debug_abbrev  0x0000018c      0x358 src/TimerTwo.o
+ .debug_abbrev  0x000004e4       0xfa C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_abbrev  0x000005de      0x146 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
-.debug_line     0x00000000      0x8e0
+.debug_line     0x00000000      0x8e6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x11c Sketch.o
- .debug_line    0x0000011c      0x3dc src/TimerTwo.o
- .debug_line    0x000004f8      0x159 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_line    0x00000651      0x28f C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_line    0x0000011c      0x3e2 src/TimerTwo.o
+ .debug_line    0x000004fe      0x159 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_line    0x00000657      0x28f C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
 .debug_frame    0x00000000      0x2a0
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 Sketch.o
  .debug_frame   0x00000034      0x16c src/TimerTwo.o
- .debug_frame   0x000001a0       0x44 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_frame   0x000001e4       0xbc C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_frame   0x000001a0       0x44 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_frame   0x000001e4       0xbc C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
+<<<<<<< Updated upstream
 .debug_str      0x00000000      0x81a
  *(.debug_str)
  .debug_str     0x00000000      0x4fb Sketch.o
@@ -625,6 +638,24 @@ END GROUP
  .debug_loc     0x00000000      0x602 src/TimerTwo.o
  .debug_loc     0x00000602       0x26 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
  .debug_loc     0x00000628      0x249 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+=======
+.debug_str      0x00000000      0x84d
+ *(.debug_str)
+ .debug_str     0x00000000      0x52b Sketch.o
+                                0x5ac (size before relaxing)
+ .debug_str     0x0000052b      0x11e src/TimerTwo.o
+                                0x6bc (size before relaxing)
+ .debug_str     0x00000649       0xb3 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+                                0x261 (size before relaxing)
+ .debug_str     0x000006fc      0x151 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+                                0x246 (size before relaxing)
+
+.debug_loc      0x00000000      0x89a
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x62b src/TimerTwo.o
+ .debug_loc     0x0000062b       0x26 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_loc     0x00000651      0x249 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
+>>>>>>> Stashed changes
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -644,12 +675,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x100
+.debug_ranges   0x00000000       0xe8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 Sketch.o
- .debug_ranges  0x00000018       0x90 src/TimerTwo.o
- .debug_ranges  0x000000a8       0x20 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(main.o)
- .debug_ranges  0x000000c8       0x38 C:\Users\virskl\Documents\GitHub\Timer\TimerTwo\CTC\TimerTwo_AtmelStudio\TimerTwo\ArduinoCore\Debug\libArduinoCore.a(wiring.o)
+ .debug_ranges  0x00000018       0x78 src/TimerTwo.o
+ .debug_ranges  0x00000090       0x20 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(main.o)
+ .debug_ranges  0x000000b0       0x38 C:\Users\Andreas\DOCUME~1\GitHub\Timer\TimerTwo\CTC\TIMERT~1\TimerTwo\ARDUIN~1\Debug\libArduinoCore.a(wiring.o)
 
 .debug_macro
  *(.debug_macro)
