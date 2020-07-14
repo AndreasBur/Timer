@@ -128,7 +128,7 @@ stdReturnType TimerOne::setPeriod(unsigned long Microseconds)
     /* was request out of bounds? */
 	if(Microseconds <= ((TIMERONE_RESOLUTION / (F_CPU / 1000000)) * TIMERONE_MAX_PRESCALER)) {
         ReturnValue = E_OK;
-        /* calculate timer cycles to reach timer period, the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2 */
+        /* calculate timer cycles to reach timer period. */
 		TimerCycles = (F_CPU / 1000000) * Microseconds;
         /* calculate timer prescaler */
 		if(TimerCycles < TIMERONE_RESOLUTION)              ClockSelectBitGroup = TIMERONE_REG_CS_NO_PRESCALER;
