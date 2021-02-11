@@ -424,7 +424,7 @@ stdReturnType TimerTwo::read(uint32_t& Microseconds)
 ******************************************************************************************************************************************************/
 ISR(TIMER2_OVF_vect)
 {
-	Timer2.overflowCallback();
+	Timer2.callOverflowCallback();
 }
 
 

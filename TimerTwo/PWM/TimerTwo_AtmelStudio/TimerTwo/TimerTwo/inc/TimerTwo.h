@@ -116,6 +116,11 @@ class TimerTwo
   public:
     static TimerTwo& getInstance();
 
+    // get methods
+	StateType getState() const { return State; }
+	TimerIsrCallbackF_void getTimerIsrCallbackFunction() const { return TimerOverflowCallback; }
+	
+	// set methods
     stdReturnType init(uint32_t = 1000uL, TimerIsrCallbackF_void = nullptr);
     stdReturnType setPeriod(uint32_t);
     stdReturnType enablePwm(PwmPinType, byte);
@@ -127,7 +132,7 @@ class TimerTwo
     stdReturnType attachInterrupt(TimerIsrCallbackF_void);
     void detachInterrupt();
     stdReturnType read(uint32_t&);
-    void overflowCallback() { TimerOverflowCallback(); }
+    void callOverflowCallback() { TimerOverflowCallback(); }
 };
 
 /* TimerTwo will be pre-instantiated in TimerTwo source file */
